@@ -18,7 +18,7 @@
 
 
 /resource/grammar/          export-ignore
-/resource/javascrpt/        export-ignore
+/resource/javascript/       export-ignore
 /resource/sass/             export-ignore
 /resource/task/             export-ignore
 /resource/working/          export-ignore
