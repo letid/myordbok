@@ -1,0 +1,65 @@
+#content .resize .wrapper{ padding:20px 0;}
+#primary{ display: table; width:100%; border-collapse:separate;border-spacing:3px; line-height:19px;}
+#primary .fonts{ display: table-cell;height: 600px;box-shadow:inset 0px 0px 1px 0px #e0dfdf; border:1px solid #e2e2e2; border-radius:1px; vertical-align:top;}
+#primary .fonts.Commercial{ width:170px; padding:5px; overflow: hidden; }
+#primary .fonts.Commercial .gadx160px600{ display: block; overflow: hidden;}
+
+#primary .fonts h2{ display: block; padding:10px 7px; font-size: 15px;  border-bottom: 1px solid #EBECE6;color: #666; text-shadow: #FFFFFF 1px 1px 1px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+#primary .fonts h2 span{ display: block; font-size: 11px; margin-top:3px; border-top: 1px solid #C5C9B6; font-weight: normal; color: #360; }
+
+#primary .fonts ul.keyboard {display:block; padding:1% 3% 1% 7%; list-style:none;}
+#primary .fonts ul.keyboard li {display:block; margin:2px 0; font-size: 12px; color: #666666; }
+#primary .fonts ul.keyboard li a { display: table; width: 100%; color: #039; }
+#primary .fonts ul.keyboard li a span,
+#primary .fonts ul.keyboard li a em { display:table-cell; font-style: normal; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;  }
+
+#primary .fonts ul.keyboard li a em {font-size: 11px; max-width:30px; padding:1px 2px; width: 80px;  border-radius:20px; color: #FFF; text-shadow: #666 0px 0px 1px; background-color: #569ed7;  text-align: center; }
+#primary .fonts ul.keyboard li a:hover em{ background-color: #74AEDE; }
+#primary .fonts ul.keyboard li a.not * { cursor: default; color: #999999;}
+#primary .fonts ul.keyboard li a.not span{ text-decoration: line-through; }
+#primary .fonts ul.keyboard li a.not em { background-color: #E8E8E8; text-shadow: #fff 0px 0px 1px; }
+
+#primary .fonts ul.typeface {display:block; padding:1% 2%; list-style:none;}
+#primary .fonts ul.typeface li {display:block; margin:2px 0; font-size: 12px; }
+#primary .fonts ul.typeface li a { display:block; padding:3px 3px 3px 27px;color: #333; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;  }
+#primary .fonts ul.typeface li a:after { content: " "; height:19px; width:19px; position: absolute; left:1px; top:3px; pointer-events: none; border-radius: 15px; background-image: url(../../template/images/icon/floppy.png); background-repeat: no-repeat; background-size:contain;background-color: #A3A78B; background-position: center center; overflow: hidden; box-shadow:inset 0px 0px 1px 1px #505246; }
+
+#primary .fonts ul.typeface li a:hover{color: #039;}
+#primary .fonts ul.typeface li a:hover:after{box-shadow:inset 0px 0px 1px 1px #569ed7; background-size:15px auto;}
+
+#primary .fonts p { display: block; padding: 2% 7%; border-top: 1px solid #EBECE6; color: #666; }
+#primary .fonts p a{ display:block; padding-top:3%; margin-top:2%; border-top: 1px solid #EBECE6;color: #039; text-shadow: #FFFFFF 1px 1px 1px; font-size: 12px;}
+
+.gadx468px15{display:inline-block; margin:1% 1px; padding:2px; box-shadow:inset 0px 0px 1px 0px #e0dfdf; border:1px solid #e2e2e2; border-radius:1px;}
+.gadx468px15 .gadbr{ display: block; max-width: 468px; max-height: 15px; overflow: hidden;  }
+.gadx468px15 .gadbr .gadwap { display:block; width:468; height:15px;overflow: hidden; }
+
+#secondary, #external { display:block;}
+div.lists ul { display:block; padding:0; }
+div.lists ul *{white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+div.lists ul li { display: inline-block; padding:5px; margin:2px 0px 2px 7px;   max-width:235px; width:23%; min-width:190px;min-height: 50px; border-radius: 2px;  line-height: 19px;box-shadow:inset 0px 0px 1px 1px #ccc;}
+
+div.lists ul li a, div.lists ul li p {display:block; }
+div.lists ul li a {}
+div.lists ul li a.dt { border-bottom: 1px solid #e2e2e2; padding: 0 25px 0 5px;  color: #039; }
+div.lists ul li a.dt:hover{ color: #03C; }
+div.lists ul li a.dt:visited{ color: #666666; }
+
+div.lists ul li a.dt:visited:hover{ color: #900; }
+div.lists ul li a.dl { position: absolute; top: 5px; right: 5px; width: 18px; height: 18px; text-indent: 9999px; background-image: url(../../template/images/icon/floppy.png); background-repeat: no-repeat; background-position: center center; background-size: 13px auto; background-color: #D6D6D6; box-shadow: inset 0px 1px 1px 0px #505246; }
+div.lists ul li a.dl:hover{ background-color: #BFBFBF; }
+div.lists ul li a.dl.no{display:none;}
+div.lists ul li p{ font-size: 10px; line-height: 15px; padding: 0px 5px; }
+div.lists ul li p.f2{}
+div.lists ul li p.f5{}
+#secondary ul li { background-color: #f9f9f9; }
+
+
+#cboxLoadedContent{}
+#zozum .main{ display:block; padding:7px;}
+#zozum h1{}
+#zozum h2{}
+#zozum h3{}
+#zozum p{ margin:0; font-size: 12px; color: #666; }
+#zozum p em{ color: #600; font-style: normal; font-weight: bold; }
+#zozum p a{ display: inline-block; margin:15px 0; padding:3px 5px; border-radius:1px; font-size: 12px; color: #F3F3F3; text-shadow: #666 0px 1px 1px; box-shadow: inset 0px 0px 1px 1px #7C7C7C;background-color: #9E9E9E; }

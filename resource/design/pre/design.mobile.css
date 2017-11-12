@@ -1,0 +1,42 @@
+.plt{}
+#zolai{}
+#zozum{}
+/*
+html, body{height:100%;}
+body{display:block;width:100%;}
+body>div{display:table-cell;padding:0;margin:0;height:100vh;vertical-align:top;}
+body>div#zolai{width:100vw;min-width:30px;box-shadow:1px 0px 3px 1px #a09e9e; }
+body>div#zozum{max-width:400px; width:25%;height:100%;padding-left:4px;top:0;right:0;color:#C8C4C4;background-color:#fff; overflow:hidden;}
+*/
+html, body{height:100%;width:100%;overflow:hidden;}
+body{display:block;position:fixed; top:0; left:0; right:0; bottom:0; color:#333; background-color:#FBFBFB; font-size:12pt;}
+body>div{display:block;}
+
+#bar{z-index:4;top:0; } 
+#header{z-index:3;top:40px; }
+#board{ z-index: 2; top: 80px; height: 50px; background-color: #999; }
+#content{ z-index: 2;top:140px;left:0;right:0;bottom:50px; background-color: #CCC;overflow-y:scroll;overflow-x:auto;-webkit-overflow-scrolling:touch; }
+#footer{z-index:1;bottom:0px;}
+#zolai{z-index:8;}
+#zozum{z-index:7;}
+
+
+
+.portal{display:block;position:fixed;width:100%; left:0;}
+.portal .resize{display:block;padding:0px 2%;}
+.portal .resize .wrapper{display:block;}
+.portal .resize .wrapper .main{display:table;width:100%;margin:0 auto;vertical-align:middle;}
+.portal .resize .wrapper .column{display:table-cell;vertical-align:top;table-layout:fixed;}
+.portal .resize .wrapper .column:empty{display:none;}
+.portal .resize .wrapper .zd{min-width:200px;max-width:200px;}
+.portal .resize .wrapper .zn{width:100%;}
+.portal .resize .wrapper .zm{}
+
+
+/*MyOrdbok-logo*/
+a#MyOrdbok-logo{display:block;padding-top:27px;height:10px;background-image:url(../images/MyOrdbok.logo.png);background-repeat:no-repeat;text-align:center;background-position:center top;color:#CCCCCC;}
+a#MyOrdbok-logo span{display:inline-block;color:#8C8C8C;text-align:center;text-shadow:#BBB 0px 0px 1px;padding:0px 1px;}
+a#MyOrdbok-logo span:last-child{color:#318ed7;}
+a#MyOrdbok-logo:hover span{color:#990000;}
+a#MyOrdbok-logo:hover span:last-child{color:#676767;}
+

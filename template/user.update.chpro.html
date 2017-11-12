@@ -1,0 +1,67 @@
+<form method="POST" action="?chpro">
+    <h2>{Update Profile}</h2>
+    <div class="{chpro.class.firstname}">
+        <span>{First name}</span>
+        <input type="text" name="firstname" value="{chpro.value.firstname}">
+        <em>{chpro.mask.firstname}</em>
+    </div>
+    <div class="{chpro.class.lastname}">
+        <span>{Last name}</span>
+        <input type="text" name="lastname" value="{chpro.value.lastname}">
+        <em>{chpro.mask.lastname}</em>
+    </div>
+    <div class="{chpro.class.dob}">
+        <span>{Date of birth}</span>
+        <input type="text" size="26" name="dob" value="{chpro.value.dob}">
+        <em>{chpro.mask.dob}</em>
+    </div>
+    <div class="{chpro.class.address}">
+        <span>{Address}</span>
+        <input type="text" size="26" name="address" value="{chpro.value.address}">
+        <em>{chpro.mask.address}</em>
+    </div>
+    <div class="{chpro.class.postcode}">
+        <span>{Postcode}</span>
+        <input type="text" size="26" name="postcode" value="{chpro.value.postcode}">
+        <em>{chpro.mask.postcode}</em>
+    </div>
+    <div class="{chpro.class.city}">
+        <span>{City}</span>
+        <input type="text" size="26" name="city" value="{chpro.value.city}">
+        <em>{chpro.mask.city}</em>
+    </div>
+    <div class="{chpro.class.state}">
+        <span>{State/Province}</span>
+        <input type="text" size="26" name="state" value="{chpro.value.state}">
+        <em>{chpro.mask.state}</em>
+    </div>
+    <div class="{chpro.class.country}">
+        <span>{Country}</span>
+        <input type="text" size="26" name="country" value="{chpro.value.country}">
+        <em>{chpro.mask.country}</em>
+    </div>
+    <div class="{chpro.class.telephone}">
+        <span>{Telephone}</span>
+        <input type="text" size="26" name="telephone" value="{chpro.value.telephone}">
+        <em>{chpro.mask.telephone}</em>
+    </div>
+    <div class="{chpro.class.mobile}">
+        <span>{Mobile}</span>
+        <input type="text" size="26" name="mobile" value="{chpro.value.mobile}">
+        <em>{chpro.mask.mobile}</em>
+    </div>
+    <div class="{chpro.class.site}">
+        <span>{Site}</span>
+        <input type="text" size="26" name="site" value="{chpro.value.site}">
+        <em>{chpro.mask.site}</em>
+    </div>
+    <div class="{chpro.class.profile}">
+        <span>Please tell us about yourself!</span>
+        <textarea name="profile" cols="26" rows="3">{chpro.value.profile}</textarea>
+        <em>{chpro.mask.profile}</em>
+    </div>
+    <div class="submit">
+      <input type="submit" name="chpro" value="{Update}">
+    </div>
+    {chpro.form.message}
+</form>

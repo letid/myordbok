@@ -1,0 +1,23 @@
+<div id="content" class="portal">
+    <div class="resize">
+        <div class="wrapper">
+          <form method="POST">
+              <h2>{Signin}</h2>
+              <div class="{signin.class.email}">
+                  <span>{Email}</span>
+                  <input type="text" size="26" name="email" value="{signin.value.email}">
+                  <em>{signin.mask.email}</em>
+              </div>
+              <div class="{signin.class.password}">
+                  <span>{Password}</span>
+                  <input type="password" size="26" name="password" value="{signin.value.password}">
+                  <em>{signin.mask.password}</em>
+              </div>
+              <div class="submit">
+                  <input type="submit" name="signin" value="{Signin}">
+              </div>
+              {signin.form.message}
+          </form>
+        </div>
+    </div>
+</div>

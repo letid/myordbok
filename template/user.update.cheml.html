@@ -1,0 +1,17 @@
+<form method="POST" action="?cheml">
+    <h2>{Change e-mail}</h2>
+    <div class="{cheml.class.password}">
+        <span>{Password}</span>
+        <input type="password" size="26" name="password" value="{cheml.value.password}">
+        <em>{cheml.mask.password}</em>
+    </div>
+    <div class="{cheml.class.email}">
+        <span>{Email}</span>
+        <input type="text" size="26" name="email" value="{cheml.value.email}">
+        <em>{cheml.mask.email}</em>
+    </div>
+    <div class="submit">
+        <input type="submit" name="cheml" value="{Change}">
+    </div>
+    {cheml.form.message}
+</form>

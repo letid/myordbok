@@ -1,0 +1,20 @@
+<div id="header" class="portal">
+    <div class="resize">
+        <div class="row">
+            <div class="column">
+                {menu.dictionary}
+            </div>
+            <div class="column wide">
+                <form name="search" method="get" action="/definition">
+                    <p>
+                        <input type="search" name="q" value="{q}" title="Type word to find it's definition">
+                    </p>
+                    <p>
+                        <button type="submit" id="search">&#xe83d;</button>
+                    </p>
+                    <div id="suggest"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

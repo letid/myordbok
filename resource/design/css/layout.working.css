@@ -1,0 +1,145 @@
+html, body {height:100%;}
+body{ display:block; width:100%;}
+body>div{ display: table-cell; padding:0; margin:0;height:100vh;}
+body>div#zolai{ width:100vw; min-width:30px;box-shadow: 1px 0px 3px 1px #a09e9e;  }
+body>div#zozum{ min-width: 300px; height:100%; padding-left: 4px; top: 0; right: 0; color: #C8C4C4; background-color: #fff; }
+
+.portal {display:block; }
+.portal .resize {display:block;padding:0px 2%;}
+.portal .resize .wrapper{display:block;}
+.portal .resize .wrapper .main{display:table; width:100%; margin:0 auto; vertical-align:middle;}
+.portal .resize .wrapper .column{display: table-cell; vertical-align:top;table-layout: fixed;}
+.portal .resize .wrapper .column:empty{display:none;}
+.portal .resize .wrapper .zd{min-width:200px;max-width:200px;}
+.portal .resize .wrapper .zn{width:100%;}
+.portal .resize .wrapper .zm{}
+#bar {z-index:4;} 
+#header {z-index:3;}
+#content {z-index:2;}
+#footer {z-index:1;}
+#zolai {z-index:8;}
+#zozum {z-index:7;}
+
+iframe[id^="oauth2relay"] {position: fixed!important; display:none!important; }
+
+#bar .resize, #footer .resize {margin:0 auto;}
+#header .resize, #board .resize, #content .resize {max-width:930px;}
+
+#optcon { display:none; position: absolute; z-index: 3; max-width: 350px; min-width: 300px; padding: 5px; top: 70px; right: -5px; box-shadow: inset 0px 1px 1px 1px #b6b5b5; background-color: #fdfcfc; }
+/*
+SCROLLBAR AND COLOR
+#zozum .main::-webkit-scrollbar {width: 10px;}
+#zozum .main::-webkit-scrollbar-track {-webkit-box-shadow: 0 0 6px rgba(0,0,0,0.4); border-radius:1px;}2
+#zozum .main::-webkit-scrollbar-thumb {border-radius:1px; -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.7);}
+#zozum .main {overflow-y:scroll; overflow-x:auto; -webkit-overflow-scrolling:touch;}
+*/
+
+
+/*MyOrdbok-logo*/
+a#MyOrdbok-logo{display: block; padding-top: 27px; height: 10px; background-image: url(../images/MyOrdbok.logo.png); background-repeat: no-repeat; text-align: center; background-position: center top; color: #CCCCCC;}
+a#MyOrdbok-logo span{display: inline-block; color: #8C8C8C; text-align: center; text-shadow: #BBB 0px 0px 1px; padding:0px 1px;}
+a#MyOrdbok-logo span:last-child{color: #318ed7;}
+a#MyOrdbok-logo:hover span{color: #990000;}
+a#MyOrdbok-logo:hover span:last-child{color: #676767;}
+
+
+/*
+color: #039;
+color: #0661a9; border-bottom:2px solid #569ed7;
+box-shadow: inset 0px 0px 1px 1px #7C7C7C;background-color: #9E9E9E;
+box-shadow: inset 0px 0px 1px 1px #1a5e94;background-color: #569ed7;
+color: #F3F3F3; text-shadow: #666 0px 1px 1px; box-shadow: inset 0px 0px 1px 1px #7C7C7C;background-color: #9E9E9E;
+background-color: #f9f9f9; box-shadow: inset 0px 0px 1px 0px #e0dfdf; border-bottom: 1px solid #e2e2e2;
+background-color: #569ed7;
+form[name=search] input[type=button]{border-radius:1px; font-size: 12px; color: #F3F3F3; text-shadow: #666 0px 1px 1px; box-shadow: inset 0px 0px 1px 1px #7C7C7C;background-color: #9E9E9E;}
+#bar ul li.current a { border-radius:2px; color: #F3F3F3; text-shadow: #666 0px 1px 1px; box-shadow: inset 0px 1px 1px 1px #7C7C7C;background-color: #9E9E9E;}
+*/
+/*BAR*/
+#bar { border-top: 3px solid #7b808a; height: 36px; border-bottom:1px solid #bebebe; background-color: #f1f1f1;}
+#bar ul {display:table; padding:0; margin:0; list-style:none;}
+#bar ul li { display: table-cell; padding:5px 1px 7px 0px; }
+#bar ul li a{ display: block; padding:5px 5px; font-size: 13px; color:#404347; white-space: nowrap; overflow:hidden;}
+#bar ul li:hover>a{color: #236ea9;}
+
+#bar ul>li.current>a { border-radius:2px; color: #F3F3F3; text-shadow: #666 0px 1px 1px; box-shadow: inset 0px 1px 1px 1px #7C7C7C;background-color: #9E9E9E;}
+#bar ul>li>ul>li.current>a { border-radius:0px; color: #318ed7;text-shadow: #fff 0px 0px 1px; box-shadow:inset 0px 0px 0px 0px #7C7C7C;background-color: transparent;}
+#bar ul>li>ul>li>a:hover{color: #318ed7;}
+#bar ul>li.current>as:after {border: solid transparent;border-top-color:#9E9E9E; border-width:4px; right:43%;bottom:-8px;}
+
+#bar ul>li.hasChild>a{ padding-right:15px;}
+#bar ul>li.hasChild>a:after{border: solid transparent;border-top-color:#404347; border-width:4px; right:4px; top:11px;}
+#bar ul>li.current.hasChild>a:after{border-top-color:#fff; }
+
+#bar ul li ul{display:none;}
+
+#bar ul li:hover ul{display: table; position: absolute; top:37px; background-color:#F8F8F8; box-shadow: 0px 1px 1px 1px #9E9E9E;}
+
+#bar ul li ul:after, #bar ul li ul:before {border: solid transparent;}
+#bar ul li ul:before{border-bottom-color:#989797; border-width:6px; right:78%; top:-12px;}
+#bar ul li ul:after {border-bottom-color:#F8F8F8; border-width:4px; right:79%;top:-8px;}
+
+#bar ul li ul li{display: table-row; padding:0px;}
+#bar ul li ul li a{font-size: 12px; padding:7px 7px;}
+#bar ul li ul li:first-child a{ }
+#bar ul>li.current>ul{ background-color: #E4E4E4; box-shadow: 0px 1px 1px 1px #9E9E9E; }
+#bar ul>li.current>ul:after{border-bottom-color:#E4E4E4; }
+
+#bar ul li ul li.current a {padding-left:10px;}
+#bar ul li ul li.current a:after{border: solid transparent;border-right-color:#318ed7; border-width:4px; left:1px; top:10px;}
+
+#bar ul.menu-user>li,#bar ul.menu-guest>li{padding-left:1px; padding-right:0;}
+
+#bar ul.menu-user li ul{right:0px;}
+#bar ul.menu-user li ul:before{right:18%;}
+#bar ul.menu-user li ul:after{right:20%;}
+#bar ul li ul li.logout a { color: #fff; background-color: #569ed7;padding-left:10px;}
+#bar ul li ul li.logout a:after{border: solid transparent;border-right-color:#fff; border-width:4px; left:1px; top:10px;}
+#bar ul.menu-guest li a{ border-radius:2px; color: #666666; text-shadow: #fff 0px 1px 1px; box-shadow: inset 0px 1px 1px 1px #a9a8a8; background-color: #E2E2E2; }
+#bar ul.menu-guest li a:hover {color: #8c8989;}
+#bar ul.menu-guest li.current a { color: #F3F3F3; text-shadow: #666 0px 1px 1px; box-shadow: inset 0px 1px 1px 1px #1a5e94;background-color: #569ed7;}
+/*
+color: #F3F3F3; box-shadow: inset 0px 0px 1px 1px #1a5e94;background-color: #569ed7;}
+
+border-radius:2px; color: #F3F3F3; text-shadow: #666 0px 1px 1px; box-shadow: inset 0px 1px 1px 1px #7C7C7C;background-color: #9E9E9E;
+
+#bar ul li a {display: block; font-size: 14px; padding:2px 2px; color:#404347; border-bottom:2px solid transparent;}
+#bar ul li.hasChild:hover a{border-bottom:2px solid transparent;}
+#bar ul li:hover a{color: #404347;border-bottom:2px solid #787c82;}
+#bar ul li.current a {color: #0661a9; border-bottom:2px solid #569ed7; text-shadow: #ccc 0px 0px 1px;}
+#bar ul li ul{display:none;}
+#bar ul li:hover ul{display: table; position: absolute; top:33px; background-color:#fff; padding-top:5px;}
+#bar ul li:hover ul{border-radius:1px; box-shadow:inset 0px 0px 1px 1px #bfbfbf;}
+
+
+#bar ul li ul li{display: table-row; padding:0px;}
+#bar ul li ul li a{font-size: 12px; padding:5px 7px;}
+
+#bar ul li ul:after, #bar ul li ul:before {border: solid transparent;}
+
+#bar ul li ul:before{border-bottom-color:#a7a6a6; border-width:8px; right:78%; top:-14px;}
+#bar ul li ul:after {border-bottom-color:#fff; border-width:7px; right:79%;top:-12px;}
+
+#bar ul li ul li a:hover{color: #0661a9;}
+#bar ul li.current ul li a {}
+#bar ul li.current ul li a:hover{color: #990000;}
+#bar ul li ul li.current a{color: #990000;}
+
+#bar ul li ul li.current a {padding-left:10px;}
+#bar ul li ul li.current a:after{border: solid transparent;border-right-color:#990000; border-width:4px; left:1px; top:11px;}
+#bar ul li ul li.current a:hover:after{}
+
+#bar ul li ul li.logout a {border-top: 1px solid #ccc; color: #fff; background-color: #569ed7;}
+#bar ul.menu-user li ul{right:0px;}
+#bar ul.menu-user li ul:before{right:19%;}
+#bar ul.menu-user li ul:after {right:20%;}
+
+#bar ul.menu-user li.profile>a{padding-left: 17px; background-image: url(../images/icon.png); background-repeat: no-repeat; background-position: left center; font-weight: bold; font-size: 12px;}
+#bar ul.menu-user li.profile:hover>a{}
+
+#bar ul.menu-guest li {padding-bottom:0px; }
+#bar ul.menu-guest li a{font-size: 12px;}
+#bar ul.menu-guest li:last-child { border-left: 1px solid #e5e2e2;}
+#bar ul.menu-guest li.register a{color: #900;}
+#bar ul.menu-guest li.login a{color: #333;}
+#bar ul.menu-guest li.current a{color: #360;border-bottom:2px solid #360;text-shadow: #ccc 0px 1px 1px;}
+*/

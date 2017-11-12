@@ -1,0 +1,18 @@
+<form method="POST" action="?chpwd">
+    <h2>{Change password}</h2>
+    <div class="{chpwd.class.password}">
+        <span>{Password}</span>
+        <input type="password" size="26" name="password" value="{chpwd.value.password}">
+        <em>{chpwd.mask.password}</em>
+    </div>
+    <div class="{chpwd.class.newpassword}">
+        <span>{New password}</span>
+        <input type="password" size="26" name="newpassword" value="{chpwd.value.newpassword}">
+        <em>{chpwd.mask.newpassword}</em>
+    </div>
+
+    <div class="submit">
+        <input type="submit" name="chpwd" value="{Change}">
+    </div>
+    {chpwd.form.message}
+</form>
