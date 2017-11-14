@@ -3,15 +3,15 @@ namespace app\map;
 use app;
 class grammar extends mapController
 {
-  static private $location = '/grammar/grammar.json';
+  static private $location = '/GRAMMAR/grammar.json';
   private $hN = 1;
   public function __construct()
   {
     $this->timeCounter = app\avail::timer();
     // app\avail::log('visits')->counter();
     app\avail::log()->counter();
-    // $this->storage_grammar = app\avail::$config['storage.root'].self::$location;
-    $this->storage_grammar = 'D:\Server\lethil\app\myordbok\resource'.self::$location;
+    $this->storage_grammar = app\avail::$config['storage.root'].self::$location;
+    // $this->storage_grammar = 'D:\Server\lethil\app\myordbok\resource'.self::$location;
     // $this->page_current = app\avail::$http.'/'.app\avail::$uri[0];
     $this->page_current = '/'.app\avail::$uri[0].'/';
   }
