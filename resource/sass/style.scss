@@ -1,4 +1,5 @@
 @import 'Config';
+@import 'font.face';
 html{
   padding:0;margin:0;
   &.landscape{}
@@ -74,7 +75,7 @@ div.portal {
     }
     &::after {
       z-index: -1;
-      background-image: url("/src/img/bg/delete.jpg");
+      // background-image: url("/src/img/bg/delete.jpg");
       background-size: cover;
       background-attachment: fixed;
       opacity: 0.2;

@@ -1,4 +1,22 @@
 @charset "UTF-8";
+@font-face {
+  font-family: 'Myanmar3';
+  src: url("/font/Myanmar3.eot");
+  /* IE9 Compat Modes */
+  src: url("/font/Myanmar3.eot?#iefix") format("embedded-opentype"), url("/font/Myanmar3.woff") format("woff"), url("/font/Myanmar3.ttf") format("truetype"), url("/font/Myanmar3.svg#Myanmar3") format("svg");
+  /* Legacy iOS */
+  unicode-range: U+1000-109F, U+AA60-AA7B;
+  font-weight: normal;
+  font-style: normal; }
+
+/*
+@font-face{font-family:Zawgyi-One;src:url('../../../../fonts/Zawgyi-One.ttf');unicode-range:U+1000-1097;}
+*/
+/*.mm3, .Myanmar3, .myanmar3 {font-family:'Myanmar3';}
+.zgo, .Zawgyi-One, .zawgyi {font-family:'Zawgyi-One'!important;}*/
+/** {
+	font-family: Arial,'Myanmar3',Helvetica,sans-serif;
+}*/
 html, body {
   padding: 0;
   margin: 0; }
@@ -41,7 +59,6 @@ div.portal {
     border-width: 1px 0px 1px 0px; }
   div.portal.bg-color::after {
     z-index: -1;
-    background-image: url("/src/img/bg/delete.jpg");
     background-size: cover;
     background-attachment: fixed;
     opacity: 0.2; }
