@@ -16,6 +16,12 @@ form[name=search]{
       &[type=search]{
         font-weight: normal;
         width: 98%; margin: 0 auto; padding-left:3px;
+        appearance: none;
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          border-radius: 0;
+          -moz-border-radius: 0;
+          -webkit-border-radius: 0;
         &::selection{
           background: #569ed7; color: #FFF;
         }

@@ -126,7 +126,13 @@ div.portal {
               font-weight: normal;
               width: 98%;
               margin: 0 auto;
-              padding-left: 3px; }
+              padding-left: 3px;
+              appearance: none;
+              -moz-appearance: none;
+              -webkit-appearance: none;
+              border-radius: 0;
+              -moz-border-radius: 0;
+              -webkit-border-radius: 0; }
               div.portal > div > div form[name=search] > p input[type=search]::selection, div.portal > div > div form[name=search] > p button[type=search]::selection {
                 background: #569ed7;
                 color: #FFF; }
