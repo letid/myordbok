@@ -147,7 +147,8 @@
             }
         };
         i.data.link([ "api" ]);
-        var a = {
+        var a = "ontouchstart" in t.documentElement ? "touchstart" : "click";
+        var s = {
             suggest: {
                 form: "search",
                 field: "q",
@@ -250,7 +251,7 @@
             },
             toggle: {
                 menu: function() {
-                    e("ul.menu li[data-toggle]").on("click", function() {
+                    e("ul.menu li[data-toggle]").on(a, function() {
                         var t = e(this);
                         var n = t.data("toggle");
                         var a = t.parent().next();
@@ -265,13 +266,13 @@
                     });
                 },
                 panel: function() {
-                    var n = e("body>div"), i = a.x;
-                    var s = function() {
+                    var n = e("body>div"), i = s.x;
+                    var r = function() {
                         i.removeClass("active").next().removeAttr("style").hide();
                         n.removeAttr("style");
                     };
                     if (i.hasClass("active")) {
-                        s();
+                        r();
                     } else {
                         i.next().show().animate({
                             width: "250px",
@@ -292,21 +293,21 @@
                         });
                         i.addClass("active");
                     }
-                    var r = function(n) {
+                    var l = function(n) {
                         if (!e(n.target).closest(i.next()).length) {
-                            s();
-                            e(t).off("click", r);
+                            r();
+                            e(t).off(a, l);
                         }
                     };
-                    e(t).on("click", r);
+                    e(t).on(a, l);
                 }
             },
             word: {
                 help: function() {
-                    this.form(a.x.data("word")).appendTo(a.x);
+                    this.form(s.x.data("word")).appendTo(s.x);
                 },
                 suggest: function() {
-                    a.x.parent().replaceWith(this.form(a.x.data("word")));
+                    s.x.parent().replaceWith(this.form(s.x.data("word")));
                 },
                 form: function(t) {
                     return e("<form>", {
@@ -348,22 +349,22 @@
             speech: function() {
                 var e = t.createElement("audio");
                 e.src = i.Url([ i.api, "speech", {
-                    q: a.x.parent().text(),
-                    l: a.c[1]
+                    q: s.x.parent().text(),
+                    l: s.c[1]
                 } ]);
-                a.x.addClass("playing");
+                s.x.addClass("playing");
                 e.load();
                 e.play();
                 e.addEventListener("ended", function() {
-                    a.x.removeClass("playing");
+                    s.x.removeClass("playing");
                 });
             },
             click: function() {
-                e(t).on("click", i.Class("zA"), function(t) {
+                e(t).on(a, i.Class("zA"), function(t) {
                     var n = e(this);
-                    a.x = n;
-                    a.c = n.attr("class").split(" ");
-                    s(a.c);
+                    s.x = n;
+                    s.c = n.attr("class").split(" ");
+                    r(s.c);
                     t.preventDefault();
                     t.stopPropagation();
                 });
@@ -371,20 +372,20 @@
             auto: function() {
                 e(i.Class("zO")).each(function() {
                     var t = e(this);
-                    a.x = t;
-                    a.c = t.attr("class").split(" ");
-                    s(a.c);
+                    s.x = t;
+                    s.c = t.attr("class").split(" ");
+                    r(s.c);
                 });
             },
             img: {
                 set: function() {}
             }
         };
-        function s(t) {
-            if (a[t[0]] && e.isFunction(a[t[0]])) a[t[0]](); else if (a[t[0]] && e.isFunction(a[t[0]][t[1]])) a[t[0]][t[1]](); else if (a[t[0]] && e.isFunction(a[t[0]][0])) a[t[0]][0]();
+        function r(t) {
+            if (s[t[0]] && e.isFunction(s[t[0]])) s[t[0]](); else if (s[t[0]] && e.isFunction(s[t[0]][t[1]])) s[t[0]][t[1]](); else if (s[t[0]] && e.isFunction(s[t[0]][0])) s[t[0]][0]();
         }
         e.each(n, function(e, t) {
-            s(t.split(" "));
+            r(t.split(" "));
         });
     };
 })(jQuery, document);

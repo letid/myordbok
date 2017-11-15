@@ -6,6 +6,7 @@
 		// =require ../../../../public/script.Common.js
 		fn.data.link(['api']);
 		// fn.data.meta(['uid','unm']);
+		var click = ('ontouchstart' in doc.documentElement)? "touchstart" : "click";
 		var core={
 			suggest:{
 	      // =require script.Suggestion.js
@@ -29,7 +30,7 @@
 				});
 			},
 	    click:function(){
-				$(doc).on('click',fn.Class('zA'), function(event){
+				$(doc).on(click,fn.Class('zA'), function(event){
 					var x=$(this); core.x=x;
 					// core.r=zj.Ad(x);
 					core.c=x.attr('class').split(' ');
@@ -68,7 +69,7 @@
 }(window,document));
 */
 // $(function(){
-//   $(document).MyOrdbok(['suggest ready','click','img set']);
+//   $(document).MyOrdbok(['suggest ready',click,'img set']);
 // });
 /*
 <script>

@@ -1,6 +1,5 @@
 form:'search',field:'q',button:'submit',classIn:'in',className:'selected',
 listCurrent:-1,listTotal:0,delay:0,result:'#suggest',
-// $(document).MyOrdbok(['suggest ready','click','img set']);
 ready:function(){
 	var e=this;
 	e.form=$(fn.Form(e.form));

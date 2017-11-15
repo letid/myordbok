@@ -1,6 +1,6 @@
 menu:function(){
   // NOTE: font info toggle
-  $('ul.menu li[data-toggle]').on('click', function() {
+  $('ul.menu li[data-toggle]').on(click, function() {
     var element=$(this); //core.x=element;
     var className = element.data('toggle');
     var container = element.parent().next();
@@ -35,8 +35,8 @@ panel:function(){
   var openPrimary = function(evt){
     if (!$(evt.target).closest(element.next()).length) {
       closeElement();
-      $(doc).off('click',openPrimary);
+      $(doc).off(click,openPrimary);
     }
   };
-  $(doc).on('click',openPrimary);
+  $(doc).on(click,openPrimary);
 }
