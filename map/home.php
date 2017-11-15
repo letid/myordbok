@@ -19,7 +19,7 @@ class home extends mapController
     app\versoController::menu()->requestOne('definition');
     app\versoController::menu()->requestOne('password');
     app\versoController::menu(array(
-			'menu'=>'ol', 'class'=>'MyOrdbok', 'attr'=>array( 'id'=>'MyOrdbok-logo', 'data-lang'=>app\avail::$config['lang'] ), 'list'=>'li', 'activeClass'=>'active', 'type'=>'dictionary'
+			'menu'=>'ol', 'class'=>'MyOrdbok', 'attr'=>array( 'id'=>'MyOrdbok-logo', 'data-lang'=>app\avail::$config['lang']), 'list'=>'li', 'activeClass'=>'active', 'type'=>'dictionary'
 		))->requestOne('dictionary');
     app\verseController::menu()->request();
     $this->timerfinish = $this->timeCounter->finish();

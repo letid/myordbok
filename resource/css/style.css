@@ -1262,33 +1262,6 @@ div.portal {
         color: #318ED7; }
       div.portal#bar ul > li > ol {
         display: none; }
-      div.portal#bar ul > li.active > ol, div.portal#bar ul > li:hover > ol {
-        display: block;
-        position: absolute;
-        width: 180px;
-        top: 100%;
-        left: 0px;
-        background-color: #71b1e3;
-        border-top: 1px solid #318ED7; }
-        div.portal#bar ul > li.active > ol:after, div.portal#bar ul > li.active > ol:before, div.portal#bar ul > li:hover > ol:after, div.portal#bar ul > li:hover > ol:before {
-          position: absolute;
-          display: block;
-          pointer-events: none;
-          content: " ";
-          width: 0px;
-          height: 0px;
-          text-align: center;
-          border: solid transparent; }
-        div.portal#bar ul > li.active > ol:before, div.portal#bar ul > li:hover > ol:before {
-          border-bottom-color: #1a5888;
-          border-width: 5px;
-          left: calc(10% - 1px);
-          top: -10px; }
-        div.portal#bar ul > li.active > ol:after, div.portal#bar ul > li:hover > ol:after {
-          border-bottom-color: #71b1e3;
-          border-width: 4px;
-          left: 10%;
-          top: -8px; }
     div.portal#bar ol > li > a {
       display: block;
       padding: 10px;
@@ -1309,6 +1282,21 @@ div.portal {
         left: calc(87% - 1px); }
       div.portal#bar ol.menu.user:after {
         left: 87%; }
+    div.portal#bar ul > li > ol.menu {
+      position: fixed;
+      height: 100%;
+      top: 0;
+      background-color: #71b1e3;
+      overflow: scroll;
+      border-radius: 0px; }
+      div.portal#bar ul > li > ol.menu.page {
+        left: 0;
+        box-shadow: 0px 2px 1px 1px #1d6094; }
+        div.portal#bar ul > li > ol.menu.page > li > a {
+          padding: 5%; }
+      div.portal#bar ul > li > ol.menu.user {
+        right: 0;
+        box-shadow: 0px -2px 1px 1px #1d6094; }
     div.portal#header div.column ol#MyOrdbok-logo {
       display: none; }
     div.portal#header div.column form[name=search] > p button[type=submit] {

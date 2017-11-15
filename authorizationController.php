@@ -1,8 +1,10 @@
 <?php
-namespace app;
-class authorizationController extends \letId\request\authorization
+namespace app
 {
-  protected $table = array(
-    'user' => 'users'
-  );
+  class authorizationController extends \letId\request\authorization
+  {
+    protected $table = array(
+      'user' => 'users'
+    );
+  }
 }

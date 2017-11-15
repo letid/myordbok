@@ -107,20 +107,20 @@
                 }
             },
             html: function(t, n, a) {
-                e.each(n, function(n, r) {
-                    var s = function(t, n, a) {
+                e.each(n, function(n, s) {
+                    var r = function(t, n, a) {
                         if (t) {
                             if (t.t) {
-                                if (!t.l) n.append(e(i.tag(t.t), t.d)); else if (t.d) var r = t.d; else var r = null;
+                                if (!t.l) n.append(e(i.tag(t.t), t.d)); else if (t.d) var s = t.d; else var s = null;
                             }
                             if (t.l && t.l.length) {
-                                var l = e(i.tag(t.t), r);
-                                for (index in t.l) s(t.l[index], l);
+                                var l = e(i.tag(t.t), s);
+                                for (index in t.l) r(t.l[index], l);
                                 n[a || "append"](l);
                             }
                         }
                     };
-                    s(r, t, a);
+                    r(s, t, a);
                 });
                 return t;
             },
@@ -263,6 +263,42 @@
                             }
                         }).siblings().fadeOut("fast");
                     });
+                },
+                panel: function() {
+                    var n = e("body>div"), i = a.x;
+                    var s = function() {
+                        i.removeClass("active").next().removeAttr("style").hide();
+                        n.removeAttr("style");
+                    };
+                    if (i.hasClass("active")) {
+                        s();
+                    } else {
+                        i.next().show().animate({
+                            width: "250px",
+                            height: "100%"
+                        });
+                        if (i.next().hasClass("page")) {
+                            n.animate({
+                                left: "+=250px"
+                            });
+                        } else {
+                            n.animate({
+                                right: "+=250px"
+                            });
+                        }
+                        n.css({
+                            width: "100%",
+                            position: "fixed"
+                        });
+                        i.addClass("active");
+                    }
+                    var r = function(n) {
+                        if (!e(n.target).closest(i.next()).length) {
+                            s();
+                            e(t).off("click", r);
+                        }
+                    };
+                    e(t).on("click", r);
                 }
             },
             word: {
@@ -299,7 +335,7 @@
                     var n = e(this);
                     var a = n.children("p");
                     a.html("...a moment please").removeClass();
-                    var r = e.post(i.Url([ i.api, "post" ]), i.serializeObject(e(this)), function() {}).done(function(e) {
+                    var s = e.post(i.Url([ i.api, "post" ]), i.serializeObject(e(this)), function() {}).done(function(e) {
                         a.html(e.msg).addClass(e.status);
                         if (e.status == "done") {
                             n.children("div").hide();
@@ -327,7 +363,7 @@
                     var n = e(this);
                     a.x = n;
                     a.c = n.attr("class").split(" ");
-                    r(a.c);
+                    s(a.c);
                     t.preventDefault();
                     t.stopPropagation();
                 });
@@ -337,18 +373,18 @@
                     var t = e(this);
                     a.x = t;
                     a.c = t.attr("class").split(" ");
-                    r(a.c);
+                    s(a.c);
                 });
             },
             img: {
                 set: function() {}
             }
         };
-        function r(t) {
+        function s(t) {
             if (a[t[0]] && e.isFunction(a[t[0]])) a[t[0]](); else if (a[t[0]] && e.isFunction(a[t[0]][t[1]])) a[t[0]][t[1]](); else if (a[t[0]] && e.isFunction(a[t[0]][0])) a[t[0]][0]();
         }
         e.each(n, function(e, t) {
-            r(t.split(" "));
+            s(t.split(" "));
         });
     };
 })(jQuery, document);

@@ -9,30 +9,31 @@ ul{
       max-width: 30px;
       padding: 2px 7px;
       color: $ColorMain;
+      // z-index: 99;
     }
     // @include user-select();
     >ol{
       display: none;
     }
-    &.active, &:hover{
-      >ol{
-        display: block;
-        position: absolute;
-        width: 180px;
-        top:100%;
-        left:0px;
-        background-color:lighten($ColorMain,15%);border-top:1px solid $ColorMain;
-        &:after,&:before{
-          position:absolute;display:block;pointer-events:none;content:" ";width:0px;height:0px;text-align:center;border:solid transparent;
-        }
-        &:before{
-          border-bottom-color:darken($ColorMain,20%);border-width:5px;left:calc(10% - 1px);top:-10px;
-        }
-        &:after{
-          border-bottom-color:lighten($ColorMain,15%);border-width:4px;left:10%;top:-8px;
-        }
-      }
-    }
+    // &.active, &:hover{
+    //   >ol{
+    //     display: block;
+    //     position: absolute;
+    //     width: 180px;
+    //     top:100%;
+    //     left:0px;
+    //     background-color:lighten($ColorMain,15%);border-top:1px solid $ColorMain;
+    //     &:after,&:before{
+    //       position:absolute;display:block;pointer-events:none;content:" ";width:0px;height:0px;text-align:center;border:solid transparent;
+    //     }
+    //     &:before{
+    //       border-bottom-color:darken($ColorMain,20%);border-width:5px;left:calc(10% - 1px);top:-10px;
+    //     }
+    //     &:after{
+    //       border-bottom-color:lighten($ColorMain,15%);border-width:4px;left:10%;top:-8px;
+    //     }
+    //   }
+    // }
   }
 }
 ol{
@@ -75,4 +76,50 @@ ol{
       }
     }
   }
+}
+ul {
+  >li{
+    >ol.menu{
+      position: fixed;
+      // NOTE: display,width are handle by toggle.panel()
+      // display: block;
+      // width:250px;
+      height: 100%;
+      top: 0;
+      background-color:lighten($ColorMain,15%);
+      overflow: scroll;
+      // z-index: 999;
+      border-radius: 0px;
+      &.page{
+        // display: block;
+        left: 0;
+        // border-right:1px solid $ColorMain;
+        box-shadow: 0px 2px 1px 1px darken($ColorMain,17%);
+        >li {
+          >a {
+            padding: 5%;
+          }
+        }
+      }
+      &.user{
+
+        right: 0;
+        box-shadow: 0px -2px 1px 1px darken($ColorMain,17%);
+      }
+    }
+  }
+}
+// @at-root body >div {
+//   position: fixed;
+//   left:250px;
+// }
+&#bar{
+  // position: fixed;
+  // top: 0; left: 0; right: 0;
+  // background-color: #fff;
+  // box-shadow: 2px 0px 1px 1px darken($ColorMain,17%);
+  // height: 45px;
+}
+@at-root body >div {
+  // padding-top: 50px;
 }
