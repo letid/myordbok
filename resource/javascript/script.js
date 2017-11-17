@@ -4,7 +4,9 @@
 (function($,doc){
 	$.fn.MyOrdbok=function(is){
 		// =require ../../../../public/script.Common.js
+		// fn.data.link(['api']);
 		fn.data.link(['api']);
+		console.log(fn.api);
 		// fn.data.meta(['uid','unm']);
 		var click = ('ontouchstart' in doc.documentElement)? "touchstart" : "click";
 		var core={

@@ -32,8 +32,8 @@ listener:function(lastValue){
 	var e=this;
 	var q = e.field.val();
 	if(q == '' || lastValue != q) return;
-	// zj.url([api,'suggest'])
-	$.getJSON('/api/suggestion',{q:q}, function(j){
+
+	$.getJSON(fn.Url([fn.api,'suggestion']),{q:q}, function(j){
 		e.listTotal = j.length;
 		if(e.listTotal > 0){
 			e.result.empty();

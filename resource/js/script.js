@@ -147,6 +147,7 @@
             }
         };
         i.data.link([ "api" ]);
+        console.log(i.api);
         var a = "ontouchstart" in t.documentElement ? "touchstart" : "click";
         var s = {
             suggest: {
@@ -186,18 +187,18 @@
                 },
                 listener: function(t) {
                     var n = this;
-                    var i = n.field.val();
-                    if (i == "" || t != i) return;
-                    e.getJSON("/api/suggestion", {
-                        q: i
+                    var a = n.field.val();
+                    if (a == "" || t != a) return;
+                    e.getJSON(i.Url([ i.api, "suggestion" ]), {
+                        q: a
                     }, function(t) {
                         n.listTotal = t.length;
                         if (n.listTotal > 0) {
                             n.result.empty();
-                            e.each(t, function(t, a) {
+                            e.each(t, function(t, i) {
                                 e("<p>", {
-                                    title: a,
-                                    html: a.replace(new RegExp(i, "i"), "<b>$&</b>")
+                                    title: i,
+                                    html: i.replace(new RegExp(a, "i"), "<b>$&</b>")
                                 }).appendTo(n.result).mousemove(function() {
                                     n.add(this);
                                 });
