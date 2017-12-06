@@ -15,6 +15,10 @@ var bartender = {
 
 bartender.request(your_drink);
 
+// Solomon.kiang.nasum.ngen()
+// Solomon.kiang.ngen(nasum);
+// Khen, hehpihna tawh sum 500 hong pia in!
+// Khen, please give me 500;
 var nasum = [ 500, 200, 100 ];
 
 var lehbulh = function(r) {

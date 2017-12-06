@@ -29,7 +29,7 @@ class route
       'Page'=>'api',
       'Class'=>'api',
       'Menu'=>'API',
-      // 'Type'=>'api',
+      'Type'=>'api',
       array(
         'Page'=>'dictionary',
         'Method'=>'dictionary'
@@ -94,16 +94,16 @@ class route
       'Class'=>'sign',
       'Method'=>'signin',
       'Menu'=>'Signin',
-      'Type'=>'user',
-      'Auth'=>'guest'
+      'Type'=>'guests',
+      'Auth'=>'guest' #guest
     ),
     array(
       'Page'=>'signup',
       'Class'=>'sign',
       'Method'=>'signup',
       'Menu'=>'Signup',
-      'Type'=>'user',
-      'Auth'=>'guest'
+      'Type'=>'guests',
+      'Auth'=>'guest' #guest
     ),
     array(
       'Page'=>'forgot-password',
@@ -111,7 +111,7 @@ class route
       'Method'=>'forgotPassword',
       'Menu'=>'Forgot password',
       'Type'=>'password',
-      'Auth'=>'guest'
+      'Auth'=>'guest' #guest
     ),
     array(
       'Page'=>'reset-password',
@@ -119,7 +119,7 @@ class route
       'Method'=>'resetPassword',
       'Menu'=>'Reset password',
       'Type'=>'password',
-      'Auth'=>'guest'
+      'Auth'=>'guest' #guest
     ),
     // NOTE: auth
     array(

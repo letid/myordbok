@@ -14,6 +14,7 @@ ul{
     // @include user-select();
     >ol{
       display: none;
+      -webkit-overflow-scrolling: auto;
     }
     // &.active, &:hover{
     //   >ol{
@@ -40,7 +41,7 @@ ol{
   >li{
     >a{
       display: block;padding: 10px;
-      color: #fff;font-size:12px;
+      color: #fff;font-size:105%;
       border-bottom: 1px solid lighten($ColorMain,35%);
     }
     &:last-child, &.hasChild{
@@ -86,7 +87,9 @@ ul {
       // width:250px;
       height: 100%;
       top: 0;
+      border-top:4px solid $ColorMain;
       background-color:lighten($ColorMain,15%);
+      // background-color: $ColorMain;
       overflow: scroll;
       // z-index: 999;
       border-radius: 0px;

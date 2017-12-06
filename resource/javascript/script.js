@@ -8,7 +8,8 @@
 		fn.data.link(['api']);
 		console.log(fn.api);
 		// fn.data.meta(['uid','unm']);
-		var click = ('ontouchstart' in doc.documentElement)? "touchstart" : "click";
+		var click = ('ontouchstart' in doc.documentElement)? "touchend" : "click";
+		// var click = ('ontouchstart' in doc.documentElement)? "touchstart" : "click";
 		var core={
 			suggest:{
 	      // =require script.Suggestion.js

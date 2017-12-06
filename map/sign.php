@@ -440,7 +440,7 @@ class sign extends mapController
           'method'=>'POST', 'table'=>'users', 'mask'=>'*', 'class'=>'error', 'msg'=>'default message',
           'row'=>array(
             'email'=>array(
-              'value'=>'name@email.com',
+              'value'=>'',
               'require'=>array(
                 'mask'=>'Required', 'class'=>'require', 'status'=>'email'
               ),
@@ -454,7 +454,7 @@ class sign extends mapController
               )
             ),
             'password'=>array(
-              'value'=>'name',
+              'value'=>'',
               'require'=>array(
                 'mask'=>'Required', 'class'=>'require', 'status'=>'password'
               ),
@@ -465,7 +465,7 @@ class sign extends mapController
               )
             ),
             'displayname'=>array(
-              'value'=>'Apple',
+              'value'=>'',
                 'require'=>array(
                   'mask'=>'Required', 'class'=>'require', 'status'=>'display name'
                 )
@@ -510,7 +510,7 @@ class sign extends mapController
           'msg'=>'enable many options and let you manage later using any computer.',
           'row'=>array(
             'email'=>array(
-              'value'=>'name@email.com',
+              'value'=>'',
               'require'=>array(
                 'mask'=>'Required',
                 'class'=>'require',
@@ -524,7 +524,7 @@ class sign extends mapController
               )
             ),
             'password'=>array(
-              'value'=>'name',
+              'value'=>'',
               'require'=>array(
                 'mask'=>'Required',
                 'class'=>'require',
@@ -573,7 +573,7 @@ class sign extends mapController
           'msg'=>'It happens to everyone... Enter your Username and E-mail, we will send you a new password!',
           'row'=>array(
             'email'=>array(
-              'value'=>'abc@email.com',
+              'value'=>'',
               'require'=>array(
                 'mask'=>'Required',
                 'class'=>'require',

@@ -3,6 +3,7 @@
  */
 (function(e, t) {
     e.fn.MyOrdbok = function(n) {
+        // var zolai='zolai',zozum='zozum',cur='cur',act='act',btn='btn';
         var i = {
             tag: {
                 f: "<form>",
@@ -22,13 +23,16 @@
                 img: "<img>",
                 h4: "<h4>"
             },
+            // data:{
+            // 	fn:'form[name="*"]',in:'input[name="*"]',mn:'meta[name="*"]',c:'.*',i:'#*',t:'<*>'
+            // },
             name: {
                 form: 'form[name="*"]',
                 input: 'input[name="*"]',
                 button: 'button[name="*"]',
                 meta: 'meta[name="*"]',
                 tag: "<*>",
-                "class": ".",
+                class: ".",
                 id: "#"
             },
             check: function(e) {
@@ -46,12 +50,18 @@
                     });
                 }
             },
+            // ra:function(e,r){
+            // 	return e.join(r||'');
+            // },
             Form: function(e) {
                 return this.name.form.replace("*", e);
             },
             Input: function(e) {
                 return this.name.input.replace("*", e);
             },
+            // Button:function(e){
+            // 	return this.name.button.replace('*',e);
+            // },
             Tag: function(e) {
                 return this.name.tag.replace("*", e);
             },
@@ -82,8 +92,32 @@
                 }
                 return e.replace(/ /g, "");
             },
+            // ID:function(e){return $(this.id(e));},
+            // CN:function(e){return $(this.class(e));},
+            // Rf:function(q,n){return q.substr(n||1);},
+            // Rl:function(q,n){return q.substring(n||1);},
+            // cf:function(q,s){return q.toLowerCase().split(s||' ');},
+            // NOTE: Attr
+            // attr:{
+            // 	Role:function(e){
+            // 		return fn.check(e.attr('data-role')).split(' ');
+            // 	},
+            // 	Id:function(e){
+            // 		return fn.check(e.attr('id')).split('-');
+            // 	},
+            // 	Class:function(e){
+            // 		return fn.check(e.attr('class')).split(' ');
+            // 	},
+            // 	Href:function(e){
+            // 		return e.attr('href');
+            // 	},
+            // 	Title:function(e){
+            // 		return e.attr('title');
+            // 	}
+            // },
             store: {
                 s: function(e, t, n) {
+                    //$.cookie(e[0], e[1],{expires:7, path:'/'});
                     var i;
                     if (n) {
                         var a = new Date();
@@ -111,6 +145,8 @@
                     var r = function(t, n, a) {
                         if (t) {
                             if (t.t) {
+                                //|| item.d.for || item.d.class && item.d.html|| item.d.value|| item.d.for
+                                //item.d && item.d.html || item.d && item.d.name || !item.l && item.d.text
                                 if (!t.l) n.append(e(i.tag(t.t), t.d)); else if (t.d) var s = t.d; else var s = null;
                             }
                             if (t.l && t.l.length) {
@@ -146,9 +182,24 @@
                 return n;
             }
         };
+        // fn.ah
+        // fn.data.link(['urlmain','urlproject','urlfull','api']);
+        // fn.data.meta(['uid','unm']);
+        /*
+		$.ajax({url:fn.url([e.url,comment]),dataType:"json",data:obj.serialize()}).done(function(j) {
+			//...
+		}).fail(function(jqXHR,textStatus) {
+			//...
+		}).always(function(j) {
+			//...
+		});
+		*/
+        // fn.data.link(['api']);
         i.data.link([ "api" ]);
         console.log(i.api);
-        var a = "ontouchstart" in t.documentElement ? "touchstart" : "click";
+        // fn.data.meta(['uid','unm']);
+        var a = "ontouchstart" in t.documentElement ? "touchend" : "click";
+        // var click = ('ontouchstart' in doc.documentElement)? "touchstart" : "click";
         var s = {
             suggest: {
                 form: "search",
@@ -166,6 +217,7 @@
                     if (!t.form.length) return;
                     t.field = t.form.find(i.Input(t.field)).attr("autocomplete", "off").focus().select();
                     t.result = e(t.result);
+                    //this.field.select();
                     t.field.focusin(function() {
                         t.form.addClass(t.classIn);
                     }).focusout(function() {
@@ -233,6 +285,7 @@
                     } else if (n && e.inArray(t, [ 67 ]) >= 0) {
                         return true;
                     } else if (t == 27) {} else if (t == 13) {
+                        // Enter
                         return false;
                     } else {
                         i.listCurrent = -1;
@@ -242,8 +295,11 @@
                 add: function(t) {
                     var n = this;
                     var i = e(t);
+                    //this.field.val(x.childNodes[0].nodeValue);
+                    // this.field.val(zj.At($(x)));
                     n.field.val(i.attr("title"));
                     i.addClass(n.className).siblings().removeClass();
+                    // x.className = e.className;
                     n.listCurrent = i.index();
                     i.click(function() {
                         n.form.submit();
@@ -252,8 +308,10 @@
             },
             toggle: {
                 menu: function() {
+                    // NOTE: font info toggle
                     e("ul.menu li[data-toggle]").on(a, function() {
                         var t = e(this);
+                        //core.x=element;
                         var n = t.data("toggle");
                         var a = t.parent().next();
                         t.addClass("active").siblings().removeClass("active");
@@ -308,6 +366,7 @@
                     this.form(s.x.data("word")).appendTo(s.x);
                 },
                 suggest: function() {
+                    // this.form().appendTo(core.x.parent().parent());
                     s.x.parent().replaceWith(this.form(s.x.data("word")));
                 },
                 form: function(t) {
@@ -322,7 +381,7 @@
                     })), e("<div>").append(e("<span>").html("Example"), e("<textarea>", {
                         name: "exam"
                     })), e("<p>").html(""), e("<div>", {
-                        "class": "submit"
+                        class: "submit"
                     }).append(e("<input>", {
                         type: "submit",
                         name: "submit",
@@ -332,11 +391,16 @@
                         value: "Reset"
                     }))).on("submit", this.submit);
                 },
+                // word, mean,exam, wo, wm, we,
                 submit: function(t) {
                     t.preventDefault();
                     var n = e(this);
                     var a = n.children("p");
                     a.html("...a moment please").removeClass();
+                    // var msgContainer = form.parent();
+                    // msgContainer.html('Thank you').addClass('done');
+                    // msgContainer.html('fail').addClass('fail');
+                    // form.children('div').hide();
                     var s = e.post(i.Url([ i.api, "post" ]), i.serializeObject(e(this)), function() {}).done(function(e) {
                         a.html(e.msg).addClass(e.status);
                         if (e.status == "done") {
@@ -357,6 +421,8 @@
                 e.load();
                 e.play();
                 e.addEventListener("ended", function() {
+                    //  myAudio.currentTime = 0;
+                    //  console.log("ended");
                     s.x.removeClass("playing");
                 });
             },
@@ -364,13 +430,16 @@
                 e(t).on(a, i.Class("zA"), function(t) {
                     var n = e(this);
                     s.x = n;
+                    // core.r=zj.Ad(x);
                     s.c = n.attr("class").split(" ");
+                    // core.i=zj.Ai(x);
                     r(s.c);
                     t.preventDefault();
                     t.stopPropagation();
                 });
             },
             auto: function() {
+                // console.log(fn.Class('zO'));
                 e(i.Class("zO")).each(function() {
                     var t = e(this);
                     s.x = t;
