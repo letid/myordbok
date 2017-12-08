@@ -3,7 +3,7 @@ namespace app\map;
 use app;
 class grammar extends mapController
 {
-  static private $location = '/GRAMMAR/grammar.json';
+  static private $location = '/grammar/grammar.json';
   private $hN = 1;
   public function __construct()
   {

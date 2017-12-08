@@ -27,6 +27,9 @@ class home extends mapController
   }
   public function home()
   {
+    // show the result!
+    // print_r((string) $response->getBody());
+
     // $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
     // echo $f->format(1432);
     // print_r(app\avail::$user);

@@ -3,7 +3,7 @@ namespace app\map;
 use app;
 class fonts extends mapController
 {
-  static private $location = 'MYANMAR.FONTS';
+  static private $location = 'fonts';
 	static private $fontParam = 'font';
 	static private $txt = '.txt';
 	static private $json = '.json';

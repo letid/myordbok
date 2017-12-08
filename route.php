@@ -94,16 +94,16 @@ class route
       'Class'=>'sign',
       'Method'=>'signin',
       'Menu'=>'Signin',
-      'Type'=>'guests',
-      'Auth'=>'guest' #guest
+      'Type'=>'guest',
+      'Auth'=>'guest'
     ),
     array(
       'Page'=>'signup',
       'Class'=>'sign',
       'Method'=>'signup',
       'Menu'=>'Signup',
-      'Type'=>'guests',
-      'Auth'=>'guest' #guest
+      'Type'=>'guest',
+      'Auth'=>'guest'
     ),
     array(
       'Page'=>'forgot-password',
@@ -111,7 +111,7 @@ class route
       'Method'=>'forgotPassword',
       'Menu'=>'Forgot password',
       'Type'=>'password',
-      'Auth'=>'guest' #guest
+      'Auth'=>'guest'
     ),
     array(
       'Page'=>'reset-password',
@@ -119,7 +119,7 @@ class route
       'Method'=>'resetPassword',
       'Menu'=>'Reset password',
       'Type'=>'password',
-      'Auth'=>'guest' #guest
+      'Auth'=>'guest'
     ),
     // NOTE: auth
     array(

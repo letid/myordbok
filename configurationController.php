@@ -41,7 +41,7 @@ namespace app
     foreach($init['sol.list'] as $k=>$v)foreach($v as $i=>$d)$database['mysql_table'][$i] = "db_$i";
     */
     /**
-    * application's directory rewrite!
+    * application's directory rewrite! src, lang,temp
     */
     protected $rewrite = array(
       'src'=>'resource'

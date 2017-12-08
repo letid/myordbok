@@ -4,8 +4,8 @@ namespace app\dictionary
   trait traitSetting
   {
     public $q;
-    static private $fileMobyThesaurus = '/DATABASE/MOBY/thesaurus.txt';
-    static private $fileMobyPartsofspeech = '/DATABASE/MOBY/partofspeech.txt';
+    static private $fileMobyThesaurus = '/database/moby/thesaurus.txt';
+    static private $fileMobyPartsofspeech = '/database/moby/partofspeech.txt';
 
     static private $ruleTranslateAPI = false;
     static private $ruleTranslateAccess = 'AIzaSyCXDAPSNcVG40pN7VfCjEW-r93VWbfnSHA';
