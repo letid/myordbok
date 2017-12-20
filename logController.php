@@ -4,11 +4,6 @@ namespace app
   class logController extends \letId\request\log
   {
     protected $table = 'visits';
-    // static function hits()
-  	// {
-  	// 	return new self();
-  	// 	// return new self('visits');
-  	// }
     public function counter()
   	{
       $this->requestDictionary();
@@ -20,11 +15,9 @@ namespace app
     */
     private function requestVisitsUser()
     {
-      // echo $this->table;
-      // print_r($this->rowSelector);
-      $visits = avail::$database->select('locale, lang, view, modified, created')->from($this->table)->where($this->rowSelector)->execute()->rowsCount()->toArray();
+      $visits = avail::$database->select('locale, lang, view, modified, created')->from($this->table)->where($this->rowSelector)->execute()->rowsCount()->fetchAssoc();
       if ($visits->rowsCount) {
-        avail::configuration($visits->rows[0])->merge();
+        avail::configuration($visits->rows)->merge();
       } else {
         avail::configuration(array('lang'=>'en','locale'=>'en'))->merge();
       }
@@ -49,11 +42,9 @@ namespace app
           avail::configuration('lang')->set($lang);
         }
       }
-      // $langName=avail::arrays(avail::$config['lang'])->search_key($dictionaries)->get_value(0);
-      // avail::content('lang.name')->set($langName);
-
       $lN = array_column($dictionaries, avail::$config['lang']);
-      avail::content('lang.name')->set($lN[0]);
+      // avail::content('lang.name')->set($lN[0]);
+      avail::content('lang.name')->set(avail::language($lN[0])->get());
     }
   }
 }

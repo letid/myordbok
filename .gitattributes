@@ -16,16 +16,19 @@
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
 
-
+*.Pre.*                     export-ignore
+*.Default.*                 export-ignore
+*.Def.*                     export-ignore
+*.Org.*                     export-ignore
 /resource/grammar/          export-ignore
 /resource/javascript/       export-ignore
 /resource/sass/             export-ignore
 /resource/task/             export-ignore
 /resource/working/          export-ignore
 /resource/*.json            export-ignore
-/*.md               export-ignore
-/.git               export-ignore
-/tests              export-ignore
-.editorconfig       export-ignore
-.gitattributes      export-ignore
-.gitignore          export-ignore
+/*.md                       export-ignore
+/.git                       export-ignore
+/tests                      export-ignore
+.editorconfig               export-ignore
+.gitattributes              export-ignore
+.gitignore                  export-ignore

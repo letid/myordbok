@@ -10,14 +10,14 @@ class sign extends mapController
       $this->timeCounter = app\avail::timer();
       app\avail::log()->counter();
     }
+
     public function classConcluded()
     {
-      app\versoController::menu()->requestOne('page');
-      app\versoController::menu()->requestOne('privacy');
-      app\versoController::menu()->requestOne('user');
-      app\versoController::menu()->requestOne('definition');
-      app\versoController::menu()->requestOne('password');
-      app\verseController::menu()->request();
+      app\verso::request('page')->menu();
+      app\verso::request('privacy')->menu();
+      app\verso::request('user')->menu();
+      app\verso::request('password')->menu();
+      app\verse::request()->menu();
       $this->timerfinish = $this->timeCounter->finish();
     }
     public function home()
@@ -109,6 +109,7 @@ class sign extends mapController
     }
     private function cheml()
     {
+      if (app\authGoogle::client()->user()->accessToken()) return;
       return app\avail::form(
         'cheml'
       )->setting(
@@ -176,6 +177,7 @@ class sign extends mapController
     }
     private function chpwd()
     {
+      if (app\authGoogle::client()->user()->accessToken()) return;
       return app\avail::form(
           'chpwd'
       )->setting(
@@ -401,7 +403,7 @@ class sign extends mapController
         //   )
         // )
       );
-      // $db = app\avail::$database->select()->from('users_desc')->where('userid',app\avail::$user->userid)->execute()->toArray();
+      // $db = app\avail::$database->select()->from('users_desc')->where('userid',app\avail::$user->userid)->execute()->fetchAll();
       // // print_r($db);
       // if ($db->rows) {
       //     // print_r($db->rows);
@@ -437,7 +439,11 @@ class sign extends mapController
         'signup'
       )->setting(
         array(
-          'method'=>'POST', 'table'=>'users', 'mask'=>'*', 'class'=>'error', 'msg'=>'default message',
+          'method'=>'POST',
+          'table'=>'users',
+          'mask'=>'*',
+          'class'=>'error',
+          'msg'=>app\avail::language('Sign up message')->get(),
           'row'=>array(
             'email'=>array(
               'value'=>'',
@@ -499,6 +505,7 @@ class sign extends mapController
     }
     public function signin()
     {
+      // app\avail::language('Sign in message')->get();
       return app\avail::form(
           'signin'
       )->setting(
@@ -507,7 +514,7 @@ class sign extends mapController
           'table'=>'users',
           'mask'=>'*',
           'class'=>'error',
-          'msg'=>'enable many options and let you manage later using any computer.',
+          'msg'=>app\avail::language('Sign in message')->get(),
           'row'=>array(
             'email'=>array(
               'value'=>'',

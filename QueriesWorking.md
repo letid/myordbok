@@ -15,3 +15,4 @@ SELECT * FROM `db_en` WHERE `exam` LIKE '%[%' ORDER BY `word_id`, `state`, `seq`
 
 အချို့သောအဘိဓါန်များတွင်
 အချို့သောအများဆုံးအဘိဓါန်
+

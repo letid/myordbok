@@ -25,6 +25,22 @@ form[name=search]{
         &::selection{
           background: #569ed7; color: #FFF;
         }
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+          color: #ccc;
+          text-transform: lowercase;
+        }
+        &::-moz-placeholder { /* Firefox 19+ */
+          color: pink;
+          text-transform: lowercase;
+        }
+        &:-ms-input-placeholder { /* IE 10+ */
+          color: pink;
+          text-transform: lowercase;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+          color: pink;
+          text-transform: lowercase;
+        }
       }
       &[type=submit]{
         font-size: 20px;

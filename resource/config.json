@@ -5,7 +5,7 @@
   "hinting": true,
   "units_per_em": 1000,
   "ascent": 850,
-  "copyright": "eba",
+  "copyright": "MyOrdbok",
   "glyphs": [
     {
       "uid": "2cfb3f2b46b34a1790aec0aa846297b6",
@@ -110,8 +110,14 @@
       "src": "entypo"
     },
     {
-      "uid": "d090355c31f497b61d676416c1fd39fb",
+      "uid": "uor1aru5x0tewrwsl36amx6hogjv61cs",
       "css": "twitter",
+      "code": 62210,
+      "src": "modernpics"
+    },
+    {
+      "uid": "d090355c31f497b61d676416c1fd39fb",
+      "css": "twitter-logo",
       "code": 62217,
       "src": "entypo"
     },
@@ -143,12 +149,6 @@
       "uid": "5a24a9d2bffe3b66cea31ed2f57fb65a",
       "css": "google-circles",
       "code": 62289,
-      "src": "entypo"
-    },
-    {
-      "uid": "b945f4ac2439565661e8e4878e35d379",
-      "css": "gplus",
-      "code": 62223,
       "src": "entypo"
     },
     {
@@ -252,6 +252,12 @@
       "css": "sound",
       "code": 59403,
       "src": "fontawesome"
+    },
+    {
+      "uid": "b945f4ac2439565661e8e4878e35d379",
+      "css": "google-plus",
+      "code": 62223,
+      "src": "entypo"
     }
   ]
 }

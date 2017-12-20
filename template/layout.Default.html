@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<title>{Title} [{timerfinish}]</title>
+<meta name="description" content="{Description}"/>
+<meta name="keywords" content="{Keywords}"/>
+<link rel="icon" href="{http}/src/favicon.png" type="image/png" />
+<link rel="api" href="{http}/api"/>
+</head>
+<body id="{page.id}" class="{page.class}">
+  <div class="primary">
+    <h1>Testing</h1>
+    <h2>{issignin}</h2>
+    <a href="{googleAuthUrl}">Signin</a>
+    <img src="{googleUserProfilePicture}" alt="">
+    <a href="?signout">Signout</a>
+
+    {page.content}
+  </div>
+</body>
+</html>

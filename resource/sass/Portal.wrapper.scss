@@ -85,8 +85,9 @@
                     white-space: nowrap;
                     padding: 7px 10%;
                     background-color: lighten($ColorMain,15%);
-                    border-radius: 15px;
+                    border-radius: 20px;
                     font-weight: normal;
+                    line-height: 23px;
                     color: #fff;
                     text-shadow: 1px 0px 1px #ccc;
                     &:hover {
@@ -225,7 +226,6 @@
       padding:4px 2px;
       span,em{
         display: inline-block;
-
       }
       span{
         width: 150px;
@@ -258,6 +258,57 @@
       &.submit{
         // padding-left: 155px;
       }
+      &.socialnetwork {
+        margin: 1%;
+        div{
+          // border:1px solid #fff;
+          // background-color: red;
+          // padding: 1%;
+          margin: 1%;
+          a {
+            display:block;
+            border-radius: 4px;
+            color: #fff;
+            border:1px solid #fff;
+            background-color: red;
+            font-size: 110%;
+            text-shadow: #000 1px 1px 1px;
+            text-align: left;
+            &::before{
+              padding:15px 13px;
+              border-right: 1px solid #fff;
+              margin-right: 15px;
+              text-shadow: #000 1px 1px 1px;
+              // text-shadow: #FFFFFF 1px 1px 1px;
+            }
+          }
+          &.google{
+            a{
+              background-color: $ColorGooglePlus;
+              &:hover{
+                background-color: lighten($ColorGooglePlus,10%);
+              }
+            }
+          }
+          &.facebook{
+            a{
+              background-color:$ColorFacebook;
+              &:hover{
+                background-color: lighten($ColorFacebook,10%);
+              }
+            }
+          }
+          &.twitter{
+            a{
+              background-color: $ColorTwitter;
+              &:hover{
+                background-color: lighten($ColorTwitter,10%);
+              }
+            }
+          }
+        }
+      }
+
     }
     p{
       padding: 2%;

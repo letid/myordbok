@@ -11,17 +11,13 @@ class home extends mapController
   }
   public function classConcluded()
   {
-    // app\versoController::menu()->request();
-    // app\versoController::menu()->request();
-    app\versoController::menu()->requestOne('page');
-    app\versoController::menu()->requestOne('privacy');
-    app\versoController::menu()->requestOne('user');
-    app\versoController::menu()->requestOne('definition');
-    app\versoController::menu()->requestOne('password');
-    app\versoController::menu(array(
-			'menu'=>'ol', 'class'=>'MyOrdbok', 'attr'=>array( 'id'=>'MyOrdbok-logo', 'data-lang'=>app\avail::$config['lang']), 'list'=>'li', 'activeClass'=>'active', 'type'=>'dictionary'
-		))->requestOne('dictionary');
-    app\verseController::menu()->request();
+    app\verso::request('page')->menu();
+    app\verso::request('privacy')->menu();
+    app\verso::request('user')->menu();
+    app\verso::request('definition')->menu();
+    // app\verso::request('password')->menu();
+    app\verso::request(array('attr'=>array('id'=>'MyOrdbok-logo','data-lang'=>app\avail::$config['lang']),'type'=>'dictionary'))->menu();
+    app\verse::request()->menu();
     $this->timerfinish = $this->timeCounter->finish();
     // app\avail::assist()->error_get_last();
   }
@@ -33,7 +29,6 @@ class home extends mapController
     // $f = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
     // echo $f->format(1432);
     // print_r(app\avail::$user);
-    // print_r(app\avail::cookie()->user()->get());
     // $date = new \DateTimeZone('Asia/Yangon');
     // $date = new \DateTime('NOW', new \DateTimeZone('Asia/Yangon'));
     // echo ltrim($date->format('m'), 0);
@@ -65,18 +60,17 @@ class home extends mapController
         'page.class'=>'home',
         'page.content'=>array(
           'layout.bar'=>array(),
-          // 'layout.header'=>array(),
-          // 'layout.board'=>array(),
-          'home'=>array(),
-          // 'layout.footer'=>array(),
+          'home'=>array()
         )
       )
     );
   }
   public function about()
   {
-    // app\versoController::requestTotal();
-    app\verseController::requestTotal();
+    app\verso::request()->requestCount();
+    app\verse::request()->requestCount();
+    // app\verso::request('page')->menu();
+    // app\menu::verse()->requestTotal();
     app\dictionary\request::requestTotal();
     return array(
       'layout'=>array(
@@ -88,13 +82,9 @@ class home extends mapController
         'page.content'=>array(
           'layout.bar'=>array(),
           'aboutus'=>array(
-
-            // 'locale.total'=>'3',
-            // 'dictionaries.total'=>'24',
             'dictionaries'=>app\avail::html(
               array(
                 'ol'=>array(
-                  // 'text'=>app\componentService::dictionaries(),
                   'text'=>app\dictionary\request::requestMenu(),
                   'attr'=>array(
                     'class'=>array(

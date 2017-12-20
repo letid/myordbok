@@ -1,7 +1,7 @@
 <?php
 namespace app
 {
-  class versoController extends \letId\request\verso
+  class verso extends \letId\request\verso
   {
     protected $requestWrap = array(
       'user'=>array(
@@ -26,9 +26,9 @@ namespace app
         )
       )
     );
-    static function menu($Id=array())
+    static function request($Id=array())
     {
-			return new self($Id);
+      return new self($Id);
     }
   }
 }

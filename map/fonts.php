@@ -20,12 +20,10 @@ class fonts extends mapController
   }
   public function classConcluded()
   {
-    app\versoController::menu()->requestOne('page');
-    app\versoController::menu()->requestOne('privacy');
-    app\versoController::menu()->requestOne('user');
-    // app\versoController::menu()->requestOne('definition');
-    // app\versoController::menu()->requestOne('password');
-    app\verseController::menu()->request();
+    app\verso::request('page')->menu();
+    app\verso::request('privacy')->menu();
+    app\verso::request('user')->menu();
+    app\verse::request()->menu();
     $this->timerfinish = $this->timeCounter->finish();
   }
   public function home()

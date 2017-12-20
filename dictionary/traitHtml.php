@@ -195,7 +195,7 @@ namespace app\dictionary
           'li'=> array(
             'text' => array(
               'h3'=>array(
-                'text' =>$k
+                'text' =>\app\avail::language($k)->get()
               ),
               'ol'=>array(
                 'text'=>self::requestMenuChild($v)
@@ -218,7 +218,7 @@ namespace app\dictionary
           'li'=> array(
             'text' => array(
               'a'=>array(
-                'text' =>$v,
+                'text' =>\app\avail::language($v)->get(),
                 'attr' =>array(
                   'data-lang'=>$k,
                   'href'=>array(

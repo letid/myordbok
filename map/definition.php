@@ -12,15 +12,13 @@ namespace app\map
     }
     public function classConcluded()
     {
-      app\versoController::menu()->requestOne('page');
-      app\versoController::menu()->requestOne('privacy');
-      app\versoController::menu()->requestOne('user');
-      app\versoController::menu()->requestOne('definition');
-      app\versoController::menu()->requestOne('password');
-      app\versoController::menu(array(
-  			'menu'=>'ol', 'class'=>'MyOrdbok', 'attr'=>array( 'id'=>'MyOrdbok-logo', 'data-lang'=>app\avail::$config['lang'] ), 'list'=>'li', 'activeClass'=>'active', 'type'=>'dictionary'
-  		))->requestOne('dictionary');
-      app\verseController::menu()->request();
+      app\verso::request('page')->menu();
+      app\verso::request('privacy')->menu();
+      app\verso::request('user')->menu();
+      app\verso::request('definition')->menu();
+      app\verso::request('password')->menu();
+      app\verso::request(array('attr'=>array('id'=>'MyOrdbok-logo','data-lang'=>app\avail::$config['lang']),'type'=>'dictionary'))->menu();
+      app\verse::request()->menu();
       $this->timerfinish = $this->timeCounter->finish();
     }
     public function home()

@@ -1,0 +1,28 @@
+<div id="content" class="portal">
+    <div class="resize centers">
+        <div class="wrapper">
+          <form method="POST" name="signup">
+              <h2>{Signup}</h2>
+              <div class="{signup.class.email}">
+                  <span>{Email}</span>
+                  <input type="text" size="26" name="email" value="{signup.value.email}">
+                  <em>{signup.mask.email}</em>
+              </div>
+              <div class="{signup.class.password}">
+                  <span>{Password}</span>
+                  <input type="password" size="26" name="password" value="{signup.value.password}">
+                  <em>{signup.mask.password}</em>
+              </div>
+              <div class="{signup.class.displayname}">
+                  <span>{Display name}</span>
+                  <input type="text" size="26" name="displayname" value="{signup.value.displayname}">
+                  <em>{signup.mask.displayname}</em>
+              </div>
+              <div class="submit">
+                  <input type="submit" name="signup" value="{Signup}">
+              </div>
+              {signup.form.message}
+          </form>
+        </div>
+    </div>
+</div>

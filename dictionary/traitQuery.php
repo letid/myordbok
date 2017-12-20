@@ -10,7 +10,7 @@ namespace app\dictionary
       if(!$l)$l=self::$langCurrent;
       if($q=addslashes($q) and $c and $criteria=self::$ruleCriteria[$c]) $q=str_replace('q',$q,$criteria);
       $select = is_array($s)?implode(',',$s):$s;
-      $db = \app\avail::$database->select($select)->from(self::tableName($l))->where($r,$q)->execute()->rowsCount()->toArray();
+      $db = \app\avail::$database->select($select)->from(self::tableName($l))->where($r,$q)->execute()->rowsCount()->fetchAll();
       self::$row[$i] = $db->rows;
       if ($db->rowsCount) {
         return self::$total[$i] = $db->rowsCount;
@@ -28,7 +28,7 @@ namespace app\dictionary
         "SELECT d.*,s.`describe` FROM `en_define` d
           LEFT JOIN `en_describe` s ON s.`id` = d.`id`
         WHERE d.`wid` = '$q' ORDER BY d.`tid`, d.`sid` ASC"
-      )->execute()->rowsCount()->toArray();
+      )->execute()->rowsCount()->fetchAll();
     }
     private function deriveQuery($q)
     {
@@ -41,7 +41,7 @@ namespace app\dictionary
           INNER JOIN `ww_derive_type` dt ON dt.`derived_type`=d.`derived_type`
           INNER JOIN `ww_word_type` wt ON wt.`word_type`=d.`word_type`
           WHERE (d.`word`='$q' OR w.`word`='$q') and (d.`derived_type` <> 0 OR d.`word_type` = 0);"
-      )->execute()->rowsCount()->toArray();
+      )->execute()->rowsCount()->fetchAll();
     }
     private function antonymQuery($q)
     {
@@ -49,11 +49,11 @@ namespace app\dictionary
 			JOIN `ww_sense` s ON s.`word_sense`=a.`word_sense1`
 			JOIN `ww_sense` w ON w.`word_sense`=a.`word_sense2`
 				WHERE s.`word`='$q'
-					GROUP BY w.`word`;")->execute()->toArray();
+					GROUP BY w.`word`;")->execute()->fetchAll();
     }
     private function suggestionQuery($q)
     {
-      return array_reduce(\app\avail::$database->select('word')->from(self::tableName(self::$langCurrent))->where('word',str_replace('q',$q,self::$ruleCriteria[1]))->limit(10)->execute()->group_by('word')->toJson()->rows, 'array_merge', array());
+      return array_reduce(\app\avail::$database->select('word')->from(self::tableName(self::$langCurrent))->where('word',str_replace('q',$q,self::$ruleCriteria[1]))->limit(10)->execute()->group_by('word')->fetchJson()->rows, 'array_merge', array());
     }
     private function tableName($Id)
     {
