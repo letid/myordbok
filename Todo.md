@@ -52,3 +52,4 @@ ALTER IGNORE TABLE users_desc ADD UNIQUE (userid);
 
 TRUNCATE TABLE users_desc;
 TRUNCATE table users;
+TRUNCATE table visits;

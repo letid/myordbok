@@ -13,7 +13,7 @@ namespace app
 				self::$client->setAuthConfig(avail::$config['storage.root'].'/client_secret.json');
 				// self::$client->setAccessType("offline");
 				self::$client->setIncludeGrantedScopes(true);
-				self::$client->setRedirectUri('http://localhost/google/?oauth2callback');
+				self::$client->setRedirectUri(avail::$config['uriClient.Google']);
 				// self::$client->setScopes('email');
 				self::$client->setScopes(
 					array(
