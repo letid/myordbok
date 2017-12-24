@@ -11,7 +11,6 @@ namespace app\admin
     public function post()
     {
       // NOTE: userId, currentLanguage, wordId(source), ipAddress
-      // $db = \app\avail::$database->insert($dataForm)->to(self::$suggestTable)->build();
       $db = avail::$database->insert($this->dataPost)->to($this->suggestTable)->execute()->rowsId();
       if ($db->rowsId) {
         return array('msg'=>'Thank you', 'status'=>'done');

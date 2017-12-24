@@ -15,29 +15,23 @@ namespace app\dictionary
     use traitSetting, traitQuery, traitEngine, traitMeaning, traitWordweb, traitMathematic, traitMoby, traitUtility, traitHtml;
     public function __construct($q=null)
     {
-      // $dictionaries = \app\avail::configuration()->dictionaries;
-      // $VersoURI = \app\avail::$uri;
-      self::$langCurrent = \app\avail::$config['lang']; //\app\avail::session('lang')->version()->get();
+      self::$langCurrent = avail::$config['lang']; //avail::session('lang')->version()->get();
       if(isset($_GET['langCurrent'])) self::$langCurrent=$_GET['langCurrent'];
       if($q):
         $this->q = $q;
       elseif(isset($_GET['q'])):
         $this->q = $_GET['q'];
-      elseif (isset(\app\avail::$uri[1])):
-        if(\app\avail::$uri[0] == 'definition'):
-          $this->q = \app\avail::$uri[1];
-        elseif (isset(\app\avail::$uri[2])):
-          $this->q = \app\avail::$uri[2];
+      elseif (isset(avail::$uri[1])):
+        if(avail::$uri[0] == 'definition'):
+          $this->q = avail::$uri[1];
+        elseif (isset(avail::$uri[2])):
+          $this->q = avail::$uri[2];
         endif;
       endif;
     }
     static function search()
     {
       return new self();
-    }
-    static function own()
-    {
-      return self::$rowGrammar;
     }
     /*
     self::search()->definition()
@@ -49,7 +43,7 @@ namespace app\dictionary
       // if($q && in_array(strtolower($q), self::$ruleRestrictedKeywords))
       $r = array('language'=>self::$langCurrent,'page'=>'definition','type'=>'none','result'=>array());
       if($q):
-        $q = \app\avail::content('q')->set(trim(rawurldecode($q)));
+        $q = avail::content('q')->set(trim(rawurldecode($q)));
         $r['query']=$q;
         if(self::$langCurrent == self::$langDefault):
           $r['kind']='definition';

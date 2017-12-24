@@ -7,7 +7,7 @@ namespace app\dictionary
     {
       if (self::$fileMobyThesaurus) {
         if (!self::isSentence($q)) {
-          $o = new \app\component\moby(\app\avail::$config['storage.root'].self::$fileMobyThesaurus);
+          $o = new \app\component\moby(avail::$config['storage.root'].self::$fileMobyThesaurus);
           if ($x=$o->synonyms($q)) {
             return array_unique(array_filter(array_map('trim', $x)));
             // if (count($x))
@@ -21,7 +21,7 @@ namespace app\dictionary
     {
       if (self::$fileMobyPartsofspeech) {
         if (!self::isSentence($q)){
-          $o = new \app\component\moby(\app\avail::$config['storage.root'].self::$fileMobyPartsofspeech);
+          $o = new \app\component\moby(avail::$config['storage.root'].self::$fileMobyPartsofspeech);
           if ($x=$o->partsOfSpeech($q)) {
             // return array_unique(array_keys($x));
             return $x;

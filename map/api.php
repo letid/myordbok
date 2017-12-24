@@ -47,7 +47,7 @@ class api extends mapController
   */
   public function dictionary()
   {
-    return app\avail::configuration()->dictionaries;
+    return app\avail::configuration('dictionaries')->own();
   }
   /*
   api/definition?q=love
@@ -134,7 +134,7 @@ class api extends mapController
       $db = $task->get($_POST['q']);
       if (isset($db->error)){
       } else {
-        $db->grammar=\app\dictionary\request::own();
+        $db->grammar=app\avail::configuration('grammar')->own();
       }
       return $db;
     } elseif (isset(app\avail::$uri[2])) {

@@ -9,7 +9,9 @@ RENAME TABLE db_en TO  en_src;
 RENAME TABLE db_en_org TO  en_src_org;
 
 
-ALTER TABLE ar_word CHANGE `define` `sense` TEXT NULL, CHANGE `describe` `exam` TEXT NULL;
+ALTER TABLE en_suggest CHANGE `mean` `sense` TEXT NULL;
+
+
 ALTER TABLE da_word CHANGE `define` `sense` TEXT NULL, CHANGE `describe` `exam` TEXT NULL;
 ALTER TABLE de_word CHANGE `define` `sense` TEXT NULL, CHANGE `describe` `exam` TEXT NULL;
 ALTER TABLE el_word CHANGE `define` `sense` TEXT NULL, CHANGE `describe` `exam` TEXT NULL;

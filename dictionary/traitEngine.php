@@ -39,7 +39,7 @@ namespace app\dictionary
     private function rowDelete($id)
     {
       // TODO: working...
-      // \app\avail::$database->delete()->from($this->table)->where('id',$id)->execute();
+      // avail::$database->delete()->from($this->table)->where('id',$id)->execute();
     }
     private function rowInsert($q,$g)
     {

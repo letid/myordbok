@@ -63,7 +63,7 @@ namespace app\dictionary
         $db = $this->myanmarQuery($rm['id']);
         foreach ($db->rows as $my) {
           $id=$my['id'];
-          $grammar=self::$rowGrammar[$my['tid']];
+          $grammar=avail::configuration('grammar')->own($my['tid']);
           $r[$grammar][$id]['de'] = $my['sense'];
           $exam = $my['exam'];
           if ($exam !='') $r[$grammar][$id]['eg'] = explode("\r\n",$exam);

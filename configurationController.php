@@ -3,7 +3,7 @@ namespace app
 {
   class configurationController extends \letId\request\configuration
   {
-    public $dictionaries = array(
+    protected $dictionaries = array(
       'International'=>array(
       	 'en'=>'English',
       	 'iw'=>'Hebrew',
@@ -35,11 +35,63 @@ namespace app
       	'hi'=>'Hindi'
       )
     );
-    /*
-    $init['sol.default'] = 'en';
-    $init['sol.url'] = 'dictionary/';
-    foreach($init['sol.list'] as $k=>$v)foreach($v as $i=>$d)$database['mysql_table'][$i] = "db_$i";
-    */
+    protected $grammar = array(
+      1=>'Noun', #0
+      16=>'Verb', #1
+      4=>'Intransitive',
+      5=>'Transitive',
+      12=>'Auxiliary verb',
+      3=>'Adjective', #2
+      6=>'Adverb', #3
+      14=>'Abbreviation', #8
+      8=>'Conjunction', #5
+      22=>'Determiner',
+      24=>'Predeterminer',
+      23=>'Contraction of', #12
+      10=>'Exclamation',
+      11=>'Indefinite article',
+      9=>'Interjection',
+      20=>'Comb Form', #10
+      7=>'Preposition', #4
+      15=>'Prefix',
+      2=>'Pronoun', #6
+      13=>'Symbol',
+      18=>'Adjective & Adverb',
+      19=>'Adjective & Noun',
+      21=>'Adjective & Pronoun',
+      26=>'Conjunction & Adverb',
+      27=>'Preposition & Conjunction',
+      28=>'Noun & Pronoun',
+      44=>'Exclamation & Noun',
+      25=>'Verb & Noun',
+      29=>'Cardinal number',
+      30=>'Ordinal number',
+      31=>'Interrogative adjective',
+      32=>'Interrogative adverb',
+      33=>'Interrogative pronoun',
+      34=>'Relative adverb',
+      35=>'Relative adjective',
+      36=>'Relative pronoun',
+      37=>'Relative conjunction',
+      38=>'Adverb & Preposition',
+      39=>'Adverb, Adjective & Preposition',
+      40=>'Modal verb',
+      41=>'Possessive adjective',
+      42=>'Possessive pronoun',
+      43=>'Infinitive marker',
+      17=>'Suffix',
+      100=>'Idiom',
+      101=>'Synonym',
+      102=>'Antonym',
+      113=>'Country',
+      104=>'Capital city',
+      105=>'Plural Noun',
+      106=>'Phrase', #11
+      107=>'Prefix',
+      108=>'Slang',
+      109=>'Verb present tense',
+      110=>'Verb past tense'
+    );
     /**
     * application's directory rewrite! src, lang,temp
     */

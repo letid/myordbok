@@ -96,7 +96,7 @@ namespace app\dictionary
                     // NOTE: condition require for NUMBER convertor
                     if($id>0){
                       $rawAttr['id']=$id;
-                      if (\app\avail::$authentication->user_roleConfirm(5)) {
+                      if (avail::$authentication->user_roleConfirm(5)) {
                         $rawAttr['class']='admin edit zA';
                       }
                     }
@@ -187,20 +187,20 @@ namespace app\dictionary
           )
         );
       }
-      return \app\avail::html($dl);
+      return avail::html($dl);
     }
     /*
     app\dictionary::requestMenu();
     */
     static function requestMenu($menu=array())
     {
-      $dictionaries = \app\avail::configuration()->dictionaries;
+      $dictionaries = avail::configuration('dictionaries')->own();
       foreach ($dictionaries as $k => $v) {
         $menu[]=array(
           'li'=> array(
             'text' => array(
               'h3'=>array(
-                'text' =>\app\avail::language($k)->get()
+                'text' =>avail::language($k)->get()
               ),
               'ol'=>array(
                 'text'=>self::requestMenuChild($v)
@@ -218,12 +218,12 @@ namespace app\dictionary
     {
       foreach ($d as $k => $v) {
         $attrClass = array($k);
-        if ($k == \app\avail::$config['lang']) $attrClass[]='active';
+        if ($k == avail::$config['lang']) $attrClass[]='active';
         $menu[]=array(
           'li'=> array(
             'text' => array(
               'a'=>array(
-                'text' =>\app\avail::language($v)->get(),
+                'text' =>avail::language($v)->get(),
                 'attr' =>array(
                   'data-lang'=>$k,
                   'href'=>array(
@@ -245,7 +245,7 @@ namespace app\dictionary
     */
     static function requestTotal($Id='dictionaries.total')
     {
-      \app\avail::content($Id)->set(array_sum(array_map("count", \app\avail::configuration()->dictionaries)));
+      avail::content($Id)->set(array_sum(array_map("count", avail::configuration('dictionaries')->own())));
     }
   }
 }

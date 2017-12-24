@@ -13,7 +13,7 @@ form:function(word){
     ),
     $('<div>').append(
       $('<span>').html('Meaning'),
-      $('<textarea>',{name:'mean'})
+      $('<textarea>',{name:'sense'})
     ),
     $('<div>').append(
       $('<span>').html('Example'),
@@ -29,7 +29,7 @@ form:function(word){
     // ),
   ).on('submit',this.submit);
 },
-// word, mean,exam, wo, wm, we,
+
 submit:function(event){
   event.preventDefault();
   var form = $(this);

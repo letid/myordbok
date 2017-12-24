@@ -33,7 +33,7 @@ namespace app
       }
       // TODO: avail::$uri change to avail::$VersoURI
       $VersoURI = avail::$VersoURI;
-      $dictionaries = avail::configuration()->dictionaries;
+      $dictionaries = avail::configuration('dictionaries')->own();
 
       if ($VersoURI && $VersoURI[0] == 'dictionary' && count($VersoURI) > 1) {
         $lang=avail::arrays(end($VersoURI))->search_value($dictionaries)->get_key(0);
