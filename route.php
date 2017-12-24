@@ -36,12 +36,6 @@ namespace app
       //     'googleAuth'
       //   )
       // ),
-      // array(
-      //   'Page'=>'signout',
-      //   'Menu'=>'Signout',
-      //   'Method'=>'signout',
-      //   'Link'=>'?signout'
-      // ),
       // NOTE: api
       array(
         'Page'=>'api',
@@ -66,7 +60,8 @@ namespace app
         ),
         array(
           'Page'=>'definition',
-          'Method'=>'definition'
+          'Method'=>'definition',
+          'Auth'=>'superAdmin'
         ),
         array(
           'Page'=>'speech',
@@ -79,6 +74,16 @@ namespace app
         array(
           'Page'=>'post',
           'Method'=>'post'
+        ),
+        array(
+          'Page'=>'import',
+          'Method'=>'import',
+          'Auth'=>'superAdmin'
+        ),
+        array(
+          'Page'=>'editor',
+          'Method'=>'editor',
+          'Auth'=>'superAdmin'
         )
       ),
       // NOTE: dictionary

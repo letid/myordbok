@@ -18,5 +18,9 @@ namespace app
     {
       return !authGoogle::client()->user()->accessToken();
     }
+    public function superAdmin()
+    {
+      return $this->user_roleConfirm(5);
+    }
   }
 }

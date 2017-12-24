@@ -62,16 +62,16 @@ namespace app\map
       // $this->responseType = 'text';
       foreach($d as $w => $v):
         if($k=key($v) and $w==$k):
-          $definition['definition.word'][]=array('w'=>$w,'l'=>$l,'p'=>$p,'d'=>app\dictionary\request::html($v[$k]));
+          $definition['definition/word'][]=array('w'=>$w,'l'=>$l,'p'=>$p,'d'=>app\dictionary\request::html($v[$k]));
         else:
           foreach($v as $word => $trans)$row[] = array('w'=>$word,'l'=>'en','p'=>$p,'d'=>app\dictionary\request::html($trans));
-          $definition['definition.sentence'][]=array('w'=>$w,'p'=>$p,'l'=>$l,'definition.word'=>$row);
+          $definition['definition/sentence'][]=array('w'=>$w,'p'=>$p,'l'=>$l,'definition/word'=>$row);
         endif;
       endforeach;
       // return $definition;
       return array(
         'layout'=>array(
-          'Title'=>'{q} define in Myanmar.',
+          'Title'=>'{q}',
           'Description'=>'the word {q} seem to be {lang.name}.',
           'Keywords'=>'{q}, {lang.name}, Myanmar dictionary, {q} means',
           'page.id'=>'definition',
@@ -80,7 +80,7 @@ namespace app\map
             'layout.bar'=>array(),
             'layout.header'=>array(),
             'layout.board'=>array(),
-            'definition'=>$definition,
+            'definition/home'=>$definition,
             'layout.footer'=>array()
           )
         )
@@ -100,7 +100,7 @@ namespace app\map
             'layout.bar'=>array(),
             'layout.header'=>array(),
             'layout.board'=>array(),
-            'definition.notfound'=>array(),
+            'definition/notfound'=>array(),
             'layout.footer'=>array()
           )
         )
@@ -119,7 +119,7 @@ namespace app\map
             'layout.bar'=>array(),
             'layout.header'=>array(),
             'layout.board'=>array(),
-            'definition.pleaseenter'=>array(),
+            'definition/pleaseenter'=>array(),
             'layout.footer'=>array()
           )
         )

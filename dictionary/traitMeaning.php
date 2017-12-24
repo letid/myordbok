@@ -64,9 +64,9 @@ namespace app\dictionary
         foreach ($db->rows as $my) {
           $id=$my['id'];
           $grammar=self::$rowGrammar[$my['tid']];
-          $r[$grammar][$id]['de'] = $my['define'];
-          $describe = $my['describe'];
-          if ($describe !='') $r[$grammar][$id]['eg'] = explode("\r\n",$describe);
+          $r[$grammar][$id]['de'] = $my['sense'];
+          $exam = $my['exam'];
+          if ($exam !='') $r[$grammar][$id]['eg'] = explode("\r\n",$exam);
         }
       }
       if (is_array($derive)) {
@@ -90,16 +90,16 @@ namespace app\dictionary
           /*
           $words ='';
           foreach (self::$row[$i] as $value) {
-            $words .=$value[self::$columnEnglish].',';
+            $words .=$value[self::$columnSense].',';
             // self::rowDelete($value['id']);
           }
           // TODO: not sure? need to test
           $keywords = self::isUnique($words);
           // self::rowInsert($q,implode(',',$keywords));
           */
-          $keywords = self::isUnique(implode(',',array_column(self::$row[$i],self::$columnEnglish)));
+          $keywords = self::isUnique(implode(',',array_column(self::$row[$i],self::$columnSense)));
         } else {
-          $keywords = self::isUnique(implode(',',array_column(self::$row[$i],self::$columnEnglish)));
+          $keywords = self::isUnique(implode(',',array_column(self::$row[$i],self::$columnSense)));
         }
         if ($keywords and $d=self::requestMeanings($keywords)) return $d;
       } elseif ($d=self::requestMeaning(1,$q)){

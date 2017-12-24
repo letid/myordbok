@@ -35,6 +35,10 @@ namespace app\dictionary
     {
       return new self();
     }
+    static function own()
+    {
+      return self::$rowGrammar;
+    }
     /*
     self::search()->definition()
     */

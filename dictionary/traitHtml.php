@@ -94,7 +94,12 @@ namespace app\dictionary
                     );
                   } else {
                     // NOTE: condition require for NUMBER convertor
-                    if($id>0)$rawAttr['id']=$id;
+                    if($id>0){
+                      $rawAttr['id']=$id;
+                      if (\app\avail::$authentication->user_roleConfirm(5)) {
+                        $rawAttr['class']='admin edit zA';
+                      }
+                    }
                     $dd[] = array(
                       'p'=>array(
                         'text'=>static::linkMakeup($rawValue), 'attr'=>$rawAttr

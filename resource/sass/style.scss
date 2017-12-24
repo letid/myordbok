@@ -42,16 +42,14 @@ body {
     // background-image: url("/src/img/bg/noise.png");
     // background-size: contain;
   }
-  >*{
+  >div{
     >div{
       >div{
       }
     }
-  }
-  >div {
+    @import 'Portal.editor';
   }
 }
-
 div.portal {
   // NOTE: Common
   position: relative;

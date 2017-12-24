@@ -108,9 +108,9 @@ namespace app\dictionary
       103=>'Medical Glossary/Terms (2nd edition)'
     );
 
-    static private $columnSource = 'source';
-    static private $columnExam = 'exam';
-    static private $columnState = 'state';
-    static private $columnEnglish = 'define';
+    static private $columnWord = 'word';
+    static private $columnSense = 'sense';
+    static private $columnUsage = 'exam';
+    static private $columnType = 'tid';
   }
 }

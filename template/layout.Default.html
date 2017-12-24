@@ -1,23 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="application-name" content="{name}" data-loads="{timerfinish}" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-<title>{Title} [{timerfinish}]</title>
+<title>{Title} {timerfinish}</title>
 <meta name="description" content="{Description}"/>
 <meta name="keywords" content="{Keywords}"/>
 <link rel="icon" href="{http}/src/favicon.png" type="image/png" />
 <link rel="api" href="{http}/api"/>
+<!-- <link rel="stylesheet" href="/src/style.css" media="screen" title="letid" charset="utf-8">
+<link rel="stylesheet" href="/css/master.css" media="screen" title="letid" charset="utf-8"> -->
+
+<link rel="stylesheet" href="{http}/src/css/style.css" type="text/css" />
+<link rel="stylesheet" href="{http}/src/css/myordbok.css" type="text/css" />
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<!-- <script src="{http}/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
+<script src="{http}/src/js/script.js"></script>
+<script>
+$(function(){
+  $(document).MyOrdbok(['suggest ready','toggle menu','click','img set','auto']);
+});
+</script>
 </head>
 <body id="{page.id}" class="{page.class}">
   <div class="primary">
-    <h1>Testing</h1>
-    <h2>{issignin}</h2>
-    <a href="{googleAuthUrl}">Signin</a>
-    <img src="{googleUserProfilePicture}" alt="">
-    <a href="?signout">Signout</a>
-
     {page.content}
   </div>
 </body>

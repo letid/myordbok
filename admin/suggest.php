@@ -1,7 +1,6 @@
 <?php
-namespace app\editor
+namespace app\admin
 {
-  use app\avail;
   class suggest
   {
     private $suggestTable = 'en_suggest';
@@ -9,15 +8,6 @@ namespace app\editor
     {
       $this->dataPost=$dataPost;
     }
-    static function request($dataPost)
-    {
-      return new self($dataPost);
-    }
-    /*
-    obj = new suggest([]);
-    return obj->post();
-    return self::request([])->post();
-    */
     public function post()
     {
       // NOTE: userId, currentLanguage, wordId(source), ipAddress
@@ -30,6 +20,9 @@ namespace app\editor
       } else {
         return array('msg'=>'Error: please try again...', 'status'=>'fail');
       }
+    }
+    public function queries()
+    {
     }
   }
 }

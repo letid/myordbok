@@ -6,7 +6,7 @@
 		// =require ../../../../public/script.Common.js
 		// fn.data.link(['api']);
 		fn.data.link(['api']);
-		console.log(fn.api);
+		// console.log(fn.api);
 		// fn.data.meta(['uid','unm']);
 		var click = ('ontouchstart' in doc.documentElement)? "touchend" : "click";
 		// var click = ('ontouchstart' in doc.documentElement)? "touchstart" : "click";
@@ -19,6 +19,9 @@
 	    },
 			word:{
 	      // =require script.Word.js
+	    },
+			admin:{
+	      // =require script.Admin.js
 	    },
 			speech:function(){
 				var audio = doc.createElement('audio');

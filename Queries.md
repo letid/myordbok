@@ -16,11 +16,11 @@ ENGINE=InnoDB
 ROW_FORMAT=DYNAMIC;
 
 -- define
-CREATE TABLE `en_define` (
+CREATE TABLE `en_sense` (
 	`id` INT(30) NOT NULL AUTO_INCREMENT,
 	`wid` INT(10) NULL DEFAULT NULL,
-	`define` TEXT NULL,
-	`sequence` INT(5) NULL DEFAULT NULL,
+	`sense` TEXT NULL,
+	`seq` INT(5) NULL DEFAULT NULL,
   `tid` INT(3) NULL DEFAULT NULL,
 	`kid` INT(5) NULL DEFAULT NULL,
 	PRIMARY KEY (`id`)
@@ -30,11 +30,11 @@ ENGINE=InnoDB
 ROW_FORMAT=DYNAMIC;
 
 -- describe
-CREATE TABLE `en_describe` (
+CREATE TABLE `en_exam` (
 	`id` INT(30) NOT NULL AUTO_INCREMENT,
 	`sid` INT(10) NULL DEFAULT NULL,
-	`describe` TEXT NULL,
-	`sequence` INT(5) NOT NULL DEFAULT '0',
+	`exam` TEXT NULL,
+	`seq` INT(5) NOT NULL DEFAULT '0',
 	`kid` INT(5) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 )
@@ -50,7 +50,7 @@ CREATE TABLE `en_suggest` (
 	`mean` TEXT NOT NULL COLLATE 'utf8_unicode_ci',
 	`exam` TEXT NULL COLLATE 'utf8_unicode_ci',
 	`lang` VARCHAR(5) NOT NULL DEFAULT 'en',
-	`status` INT(5) NOT NULL DEFAULT '0',
+	`kid` INT(5) NOT NULL DEFAULT '0',
 	`uid` INT(30) NOT NULL DEFAULT '0',
 	`dates` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	PRIMARY KEY (`id`)
@@ -63,128 +63,136 @@ ROW_FORMAT=DYNAMIC;
 ## Reset ID
 ```sql
 -- Reset id
-ALTER TABLE `db_en` DROP COLUMN `id`;
-ALTER TABLE `db_en`
+ALTER TABLE `en_src` DROP COLUMN `id`;
+ALTER TABLE `en_src`
   ADD COLUMN `id` INT(10) NOT NULL AUTO_INCREMENT FIRST,
   ADD PRIMARY KEY (`id`);
 
 -- Reset word_id
-UPDATE `db_en` SET `word_id` = 0;
+UPDATE `en_src` SET `wid` = 0;
 -- Create word_id
-UPDATE `db_en` o
-  INNER JOIN `db_en` s ON s.`source` = o.`source`
-SET o.`word_id` = s.`id`
+UPDATE `en_src` o
+  INNER JOIN `en_src` s ON s.`word` = o.`word`
+SET o.`wid` = s.`id`
 
 -- Clean testing
-SELECT * FROM db_en WHERE source = 'love'
+SELECT * FROM en_src WHERE source = 'love'
 ```
+
 
 ## Import
 ```sql
 -- Import word: word from source
+-- en_sense -> sense means def, clue, cue, sense
+-- en_exam -> exam exams des, exam means,exams, exam
+-- en_kind ->
+-- en_suggest ->
+-- en_type ->
+-- en_word ->
+
 DELETE FROM `en_word`;
 INSERT INTO `en_word` (`id`,`word`)
-  SELECT `word_id`,`source` FROM `db_en` WHERE `source` !='' GROUP BY `word_id` ORDER BY `word_id` ASC;
+  SELECT `wid`,`word` FROM `en_src` WHERE `word` !='' GROUP BY `wid` ORDER BY `wid` ASC;
 
 -- Import define: Definition
-DELETE FROM `en_define`;
-INSERT INTO `en_define` (`id`,`define`,`wid`,`tid`,`sid`,`kid`)
-  SELECT o.`id`, o.`def`, o.`word_id`, o.`state`, o.`seq`,  o.`status` FROM `db_en` o WHERE o.`def` IS NOT NULL;
+DELETE FROM `en_sense`;
+INSERT INTO `en_sense` (`id`,`sense`,`wid`,`tid`,`sid`,`kid`)
+  SELECT o.`id`, o.`sense`, o.`wid`, o.`tid`, o.`seq`,  o.`kid` FROM `en_src` o WHERE o.`sense` IS NOT NULL;
 
 -- Import describe: Usage/Example
-DELETE FROM `en_describe`;
-INSERT INTO `en_describe` (`id`,`describe`)
-  SELECT o.`id`, o.`exam` FROM `db_en` o WHERE o.`exam` IS NOT NULL;
+DELETE FROM `en_exam`;
+INSERT INTO `en_exam` (`id`,`exam`)
+  SELECT o.`id`, o.`exam` FROM `en_src` o WHERE o.`exam` IS NOT NULL;
 
 -- Testing by word
-SELECT d.*,s.`describe` FROM `en_word` w
-  INNER JOIN `en_define` d ON d.`wid` = w.`id`
-  LEFT JOIN `en_describe` s ON s.`id` = d.`id`
+SELECT d.*,s.`exam` FROM `en_word` w
+  INNER JOIN `en_sense` d ON d.`wid` = w.`id`
+  LEFT JOIN `en_exam` s ON s.`id` = d.`id`
 WHERE w.`word` LIKE 'noun' ORDER BY d.`tid`, d.`sid` ASC
 
 -- Testing by ID
-SELECT d.*,s.`describe` FROM `en_define` d
-  LEFT JOIN `en_describe` s ON s.`id` = d.`id`
+SELECT d.*,s.`exam` FROM `en_sense` d
+  LEFT JOIN `en_exam` s ON s.`id` = d.`id`
 WHERE d.`wid` LIKE '1' ORDER BY d.`tid`, d.`sid` ASC
 ```
 
 ## Prepare
 ```sql
 -- Clean source
-UPDATE `db_en` SET `source` = REPLACE(LTRIM(RTRIM(`source`)), '  ', ' ') WHERE `source` IS NOT NULL;
+UPDATE `en_src` SET `word` = REPLACE(LTRIM(RTRIM(`word`)), '  ', ' ') WHERE `word` IS NOT NULL;
 -- Clean def
-UPDATE `db_en` SET `def` = NULL WHERE `def` = '';
-UPDATE `db_en` SET `def` = REPLACE(LTRIM(RTRIM(`def`)), '  ', ' ') WHERE `def` IS NOT NULL;
+UPDATE `en_src` SET `sense` = NULL WHERE `sense` = '';
+UPDATE `en_src` SET `sense` = REPLACE(LTRIM(RTRIM(`sense`)), '  ', ' ') WHERE `sense` IS NOT NULL;
 -- Clean exam
-UPDATE `db_en` SET `exam` = NULL WHERE `exam` = '';
-UPDATE `db_en` SET `exam` = REPLACE(`exam`, `\\`, ``) WHERE `exam` IS NOT NULL;
-UPDATE `db_en` SET `exam` = REPLACE(`exam`, "\\'", "'") WHERE `exam` IS NOT NULL;
--- UPDATE `db_en` SET `exam` = REPLACE(`exam`, ".", ".\\n") WHERE `exam` IS NOT NULL;
--- UPDATE `db_en` SET `exam` = REPLACE(`exam`, ".\\n", ".") WHERE `exam` IS NOT NULL;
+UPDATE `en_src` SET `exam` = NULL WHERE `exam` = '';
+UPDATE `en_src` SET `exam` = REPLACE(`exam`, `\\`, ``) WHERE `exam` IS NOT NULL;
+UPDATE `en_src` SET `exam` = REPLACE(`exam`, "\\'", "'") WHERE `exam` IS NOT NULL;
+-- UPDATE `en_src` SET `exam` = REPLACE(`exam`, ".", ".\\n") WHERE `exam` IS NOT NULL;
+-- UPDATE `en_src` SET `exam` = REPLACE(`exam`, ".\\n", ".") WHERE `exam` IS NOT NULL;
 
--- UPDATE `db_en`
+-- UPDATE `en_src`
 --   SET `exam` = REPLACE(
 --     REPLACE(`exam`, "<b>", " [")
 --   , "</b>", "] ")
 -- WHERE `exam` IS NOT NULL;
 --
--- UPDATE `db_en`
+-- UPDATE `en_src`
 --   SET `exam` = REPLACE(
 --     REPLACE(`exam`, "<i>", " [")
 --   , "</i>", "] ")
 -- WHERE `exam` IS NOT NULL;
 
--- UPDATE `db_en`
+-- UPDATE `en_src`
 --   SET `exam` = REPLACE(
 --     REPLACE(`exam`, "", " ")
 --   , "", " ")
 -- WHERE `exam` IS NOT NULL;
 
-UPDATE `db_en` SET `exam` = REPLACE(REPLACE(`exam`, "’", "'"), "‘", "'") WHERE `exam` IS NOT NULL;
-UPDATE `db_en` SET `exam` = REPLACE(LTRIM(RTRIM(`exam`)), '  ', ' ') WHERE `exam` IS NOT NULL;
+UPDATE `en_src` SET `exam` = REPLACE(REPLACE(`exam`, "’", "'"), "‘", "'") WHERE `exam` IS NOT NULL;
+UPDATE `en_src` SET `exam` = REPLACE(LTRIM(RTRIM(`exam`)), '  ', ' ') WHERE `exam` IS NOT NULL;
 
--- UPDATE db_en SET source = replace(source, '\\', '');
--- UPDATE db_en set source = TRIM(source);
+-- UPDATE en_src SET source = replace(source, '\\', '');
+-- UPDATE en_src set source = TRIM(source);
 
 -- Adding word
-SELECT * FROM db_en WHERE source LIKE '' ORDER BY state, seq ASC
+SELECT * FROM en_src WHERE source LIKE '' ORDER BY state, seq ASC
 
-SELECT d.* FROM `en_define` d
+SELECT d.* FROM `en_sense` d
   INNER JOIN `en_word` w ON w.`word` = 'love'
-  INNER JOIN `en_describe` s ON s.`id` = w.`id`
+  INNER JOIN `en_exam` s ON s.`id` = w.`id`
 WHERE d.`id` = w.`id`
 
 
-SELECT * FROM `db_en` WHERE `source` LIKE 'noun' ORDER BY `state`, `seq` ASC
+SELECT * FROM `en_src` WHERE `word` LIKE 'noun' ORDER BY `tid`, `seq` ASC
 
 
-INSERT INTO `en_define` (`wid`,`define`,`sequence`,`tid`,`kid`)
-  SELECT w.`id`,o.`def`,o.`seq`,o.`state`,o.`status` FROM `db_en` o
-    INNER JOIN `en_word` w WHERE w.`word` = o.`source`;
+INSERT INTO `en_sense` (`wid`,`sense`,`seq`,`tid`,`kid`)
+  SELECT w.`id`,o.`sense`,o.`seq`,o.`tid`,o.`kid` FROM `en_src` o
+    INNER JOIN `en_word` w WHERE w.`word` = o.`word`;
 
 
 
-INSERT INTO `en_describe` (`sid`,`describe`)
-  SELECT w.`id`, o.`exam` FROM `db_en` o
-    INNER JOIN `en_define` w ON w.`define` LIKE o.`def`
+INSERT INTO `en_exam` (`sid`,`exam`)
+  SELECT w.`id`, o.`exam` FROM `en_src` o
+    INNER JOIN `en_sense` w ON w.`sense` LIKE o.`sense`
   WHERE o.`exam` IS NOT NULL
   LIMIT 100,100;
 
-INSERT INTO `en_describe` (`sid`,`describe`,`sequence`)
-  SELECT `id`,`describe`,`sequence` FROM `en_define` WHERE `describe` IS NOT NULL;
+INSERT INTO `en_exam` (`sid`,`exam`,`seq`)
+  SELECT `id`,`exam`,`seq` FROM `en_sense` WHERE `exam` IS NOT NULL;
 
 -- Testing with basic
-SELECT d.* FROM en_define d
+SELECT d.* FROM en_sense d
   INNER JOIN en_word w ON w.word = 'love'
 WHERE d.wid= w.id
 -- Testing with describe
-SELECT d.* FROM en_define d
+SELECT d.* FROM en_sense d
   INNER JOIN en_word w ON w.word = 'love'
-  INNER JOIN en_describe s ON s.sid = w.id
+  INNER JOIN en_exam s ON s.sid = w.id
 WHERE d.wid= w.id
 Orders LIMIT 30;
 
-INSERT INTO `en_describe` (`sid`,`describe`,`sequence`) SELECT `id`,`describe`,`sequence` FROM `en_define` WHERE `describe` IS NOT NULL;
+INSERT INTO `en_exam` (`sid`,`exam`,`seq`) SELECT `id`,`exam`,`seq` FROM `en_sense` WHERE `exam` IS NOT NULL;
 ```
 
 ## exam to be replace
@@ -203,16 +211,16 @@ INSERT INTO `en_describe` (`sid`,`describe`,`sequence`) SELECT `id`,`describe`,`
 [asin:American]
 [asin:Mathematics]
 [asin:Grammar]
-UPDATE `db_en`
+UPDATE `en_src`
   SET `exam` = REPLACE(REPLACE(`exam`, " ]", "]") , "[ ", "[")
 WHERE `exam` IS NOT NULL;
-UPDATE `db_en` SET `exam` = REPLACE(`exam`, "[as adj. ]", "[pos:A]") WHERE `exam` IS NOT NULL;
-UPDATE `db_en` SET `exam` = REPLACE(LTRIM(RTRIM(`exam`)), '  ', ' ') WHERE `exam` IS NOT NULL;
-SELECT * FROM `db_en` WHERE `exam` LIKE '%[%' ORDER BY `source`, `state`, `seq` ASC
-SELECT * FROM `db_en` WHERE `source` LIKE 'noun' ORDER BY `source`, `state`, `seq` ASC
+UPDATE `en_src` SET `exam` = REPLACE(`exam`, "[as adj. ]", "[pos:A]") WHERE `exam` IS NOT NULL;
+UPDATE `en_src` SET `exam` = REPLACE(LTRIM(RTRIM(`exam`)), '  ', ' ') WHERE `exam` IS NOT NULL;
+SELECT * FROM `en_src` WHERE `exam` LIKE '%[%' ORDER BY `word`, `tid`, `seq` ASC
+SELECT * FROM `en_src` WHERE `word` LIKE 'noun' ORDER BY `word`, `tid`, `seq` ASC
 
 
--- UPDATE `db_en` SET `exam` =
+-- UPDATE `en_src` SET `exam` =
 --   REPLACE(
 --     REPLACE(
 --       REPLACE(
@@ -221,12 +229,12 @@ SELECT * FROM `db_en` WHERE `source` LIKE 'noun' ORDER BY `source`, `state`, `se
 --       "</b>", "</b> "),
 --     "<b>", " <b>")
 -- WHERE `exam` IS NOT NULL;
-UPDATE `db_en` SET `exam` =
+UPDATE `en_src` SET `exam` =
   REPLACE(
     REPLACE(`exam`, "</b>", "-)"),
     "<b>", "(-")
 WHERE `exam` IS NOT NULL;
-UPDATE `db_en` SET `exam` =
+UPDATE `en_src` SET `exam` =
   REPLACE(
     REPLACE(`exam`, "</i>", "!)"),
     "<i>", "(!")
@@ -287,14 +295,14 @@ My secretary will see you out (ie of the building).
 ## Change
 ```sql
 -- Define table
-ALTER TABLE en_define
-	CHANGE COLUMN `state` `tid` INT(3),
-	CHANGE COLUMN `def` `define` TEXT,
-	CHANGE COLUMN `exam` `describe` TEXT,
-	CHANGE COLUMN `seq` `sequence` INT(5),
-	CHANGE COLUMN `status` `kid` INT(5),
+ALTER TABLE en_sense
+	CHANGE COLUMN `tid` `tid` INT(3),
+	CHANGE COLUMN `sense` `sense` TEXT,
+	CHANGE COLUMN `exam` `exam` TEXT,
+	CHANGE COLUMN `seq` `seq` INT(5),
+	CHANGE COLUMN `kid` `kid` INT(5),
 	CHANGE COLUMN `word_id` `wid` INT(10) AFTER `id`,
-	CHANGE COLUMN `source` `source` VARCHAR(250) AFTER `uid`,
+	CHANGE COLUMN `word` `word` VARCHAR(250) AFTER `uid`,
 	DROP COLUMN `pron`,
 	DROP COLUMN `type_id`,
 	DROP COLUMN `definition_id`,
@@ -305,7 +313,7 @@ ALTER TABLE `db_ar` RENAME `ar_word`;
 ALTER TABLE `db_da` RENAME `da_word`;
 ALTER TABLE `db_de` RENAME `de_word`;
 ALTER TABLE `db_el` RENAME `el_word`;
-ALTER TABLE `db_en` RENAME `en_word`;
+ALTER TABLE `en_src` RENAME `en_word`;
 ALTER TABLE `db_es` RENAME `es_word`;
 ALTER TABLE `db_fi` RENAME `fi_word`;
 ALTER TABLE `db_fr` RENAME `fr_word`;
@@ -337,10 +345,10 @@ ALTER TABLE `en_word_type` RENAME `ww_word_type`;
 
 -- Other table(NOT en)
 ALTER TABLE `*_word`
-	CHANGE COLUMN `source` `word` VARCHAR(250),
-	CHANGE COLUMN `state` `define` TEXT,
-	CHANGE COLUMN `def` `describe` TEXT AFTER `define`,
-	CHANGE COLUMN `status` `status` INT(5),
+	CHANGE COLUMN `word` `word` VARCHAR(250),
+	CHANGE COLUMN `tid` `sense` TEXT,
+	CHANGE COLUMN `sense` `exam` TEXT AFTER `sense`,
+	CHANGE COLUMN `kid` `kid` INT(5),
 	DROP COLUMN `uid`,
 	DROP COLUMN `mdate`;
 
@@ -349,44 +357,44 @@ ALTER TABLE `*_word`
 ## Import Old version
 ```sql
 -- Import word
-INSERT INTO mo_en_word (word) SELECT source FROM mo_en_define GROUP BY source ORDER BY source ASC;
-INSERT INTO mo_en_word (word) SELECT source FROM mo_en_define GROUP BY source ORDER BY source DESC;
+INSERT INTO mo_en_word (word) SELECT source FROM mo_en_sense GROUP BY source ORDER BY source ASC;
+INSERT INTO mo_en_word (word) SELECT source FROM mo_en_sense GROUP BY source ORDER BY source DESC;
 -- Import describe
-UPDATE `mo_en_define` SET `describe` = NULL WHERE `describe` = '';
-INSERT INTO `mo_en_describe` (`sid`,`describe`,`sequence`) SELECT `id`,`describe`,`sequence` FROM `mo_en_define` WHERE `describe` IS NOT NULL;
+UPDATE `mo_en_sense` SET `exam` = NULL WHERE `exam` = '';
+INSERT INTO `mo_en_exam` (`sid`,`exam`,`seq`) SELECT `id`,`exam`,`seq` FROM `mo_en_sense` WHERE `exam` IS NOT NULL;
 
 -- Import IDs
-UPDATE mo_en_define d
+UPDATE mo_en_sense d
   INNER JOIN mo_en_word w ON d.source = w.word
 SET d.wid = w.id
 WHERE d.source = w.word;
 
 -- Check duplicate
-UPDATE mo_en_define d
+UPDATE mo_en_sense d
   INNER JOIN mo_en_word w ON d.source = w.source
 SET d.wid = w.id
 WHERE (d.source = w.source) AND (d.wid != w.id);
 
 -- Search word
-SELECT d.* FROM mo_en_define d
+SELECT d.* FROM mo_en_sense d
   INNER JOIN mo_en_word w ON w.word = 'love'
 WHERE d.wid= w.id;
 
 -- Search ...
-SELECT d.* FROM mo_en_define d
+SELECT d.* FROM mo_en_sense d
   INNER JOIN mo_en_word w ON w.word = 'love'
-  INNER JOIN mo_en_describe s ON s.sid = w.id
+  INNER JOIN mo_en_exam s ON s.sid = w.id
 WHERE d.wid= w.id;
 
 SELECT w.*, d.*
   FROM mo_en w  
-  LEFT JOIN mo_en_define d ON d.wid = w.id
+  LEFT JOIN mo_en_sense d ON d.wid = w.id
 WHERE w.word = 'love';
 
 SELECT w.*, d.*
   FROM mo_en w  
-  LEFT JOIN mo_en_define d ON d.wid = w.id
-  LEFT JOIN mo_en_describe s ON s.sid = d.id
+  LEFT JOIN mo_en_sense d ON d.wid = w.id
+  LEFT JOIN mo_en_exam s ON s.sid = d.id
 WHERE w.word = 'love';
 
 SELECT  bird_name, member_id
@@ -395,10 +403,10 @@ SELECT  bird_name, member_id
 WHERE member_id = 2;
 ```
 mo_define, mo_describe
-en_define, en_describe
+en_sense, en_exam
 en_word
 ## Utilities
 ```sql
-UPDATE db_en SET source = replace(source, '\\', '');
-UPDATE db_en set source = TRIM(source);
+UPDATE en_src SET source = replace(source, '\\', '');
+UPDATE en_src set source = TRIM(source);
 ```

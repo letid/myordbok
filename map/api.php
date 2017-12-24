@@ -118,6 +118,29 @@ class api extends mapController
   */
   public function post()
   {
-    return app\editor\suggest::request(array_filter($_POST))->post();
+    $task = new app\admin\suggest(array_filter($_POST));
+    return $task->post();
+  }
+  public function import()
+  {
+    $task = new app\admin\import();
+    return $task->post($_GET['q']);
+  }
+  public function editor()
+  {
+    $task = new app\admin\editor();
+    if (isset($_POST['q'])) {
+
+      $db = $task->get($_POST['q']);
+      if (isset($db->error)){
+      } else {
+        $db->grammar=\app\dictionary\request::own();
+      }
+      return $db;
+    } elseif (isset(app\avail::$uri[2])) {
+      return $task->post(app\avail::$uri[2]);
+    } else {
+      return 'working';
+    }
   }
 }

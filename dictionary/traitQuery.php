@@ -5,13 +5,14 @@ namespace app\dictionary
   {
     private function requestChecker($i,$q,$r=NULL,$c=0,$l=NULL,$s='*')
     {
-      // if(!$r)$r=self::$columnSource;
+      // if(!$r)$r=self::$columnWord;
       if(!$r)$r='word';
       if(!$l)$l=self::$langCurrent;
       if($q=addslashes($q) and $c and $criteria=self::$ruleCriteria[$c]) $q=str_replace('q',$q,$criteria);
       $select = is_array($s)?implode(',',$s):$s;
       $db = \app\avail::$database->select($select)->from(self::tableName($l))->where($r,$q)->execute()->rowsCount()->fetchAll();
       self::$row[$i] = $db->rows;
+      // print_r(self::$row);
       if ($db->rowsCount) {
         return self::$total[$i] = $db->rowsCount;
       }
@@ -25,8 +26,8 @@ namespace app\dictionary
     {
       // $g=addslashes($q);
       return \app\avail::$database->query(
-        "SELECT d.*,s.`describe` FROM `en_define` d
-          LEFT JOIN `en_describe` s ON s.`id` = d.`id`
+        "SELECT d.*,s.`exam` FROM `en_sense` d
+          LEFT JOIN `en_exam` s ON s.`id` = d.`id`
         WHERE d.`wid` = '$q' ORDER BY d.`tid`, d.`sid` ASC"
       )->execute()->rowsCount()->fetchAll();
     }

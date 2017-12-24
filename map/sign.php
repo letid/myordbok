@@ -22,6 +22,18 @@ class sign extends mapController
     }
     public function home()
     {
+      $userHome = array(
+        'user/home.info'=>array(1),
+        'user/home.address'=>array(1),
+        'user/home.contact'=>array(1),
+        'user/home.profile'=>array(1),
+        'user/home.update'=>array(),
+        'user/home.status'=>array(),
+        'user/home.system'=>array()
+      );
+      if (app\avail::$authentication->user_roleConfirm(5)) {
+        $userHome['user/home.admin']=array(1);
+      }
       return array(
         'layout'=>array(
           'Title'=>'Account',
@@ -31,34 +43,7 @@ class sign extends mapController
           'page.class'=>'profile',
           'page.content'=>array(
             'layout.bar'=>array(),
-            'user.home'=>array(
-              'user.home.info'=>array(
-                'home.li.one'=>'One of One'
-                  // 'email'=>app\avail::$user->email,
-                  // 'role'=>app\avail::$user->role,
-                  // 'log'=>app\avail::$user->logs,
-                  // 'dreg'=>app\avail::$user->created,
-                  // 'dlog'=>app\avail::$user->modified
-              ),
-              'user.home.address'=>array(
-                'home.li.one'=>'One of One'
-              ),
-              'user.home.contact'=>array(
-                'home.li.one'=>'One of One'
-              ),
-              'user.home.profile'=>array(
-                'home.li.one'=>'One of One'
-              ),
-              'user.home.update'=>array(
-                'home.li.one'=>'One of One'
-              ),
-              'user.home.status'=>array(
-                'home.li.one'=>'One of One'
-              ),
-              'user.home.system'=>array(
-                'home.li.one'=>'One of One'
-              )
-            ),
+            'user/home'=>$userHome,
             'layout.footer'=>array(),
           )
         )
@@ -75,7 +60,7 @@ class sign extends mapController
           'page.class'=>'account',
           'page.content'=>array(
             'layout.bar'=>array(),
-            'user.update'=>$this->user_update_selected(),
+            'user/update'=>$this->user_update_selected(),
             'layout.footer'=>array(),
           )
         )
@@ -88,7 +73,7 @@ class sign extends mapController
       //     'page.id'=>'account',
       //     'page.class'=>'account',
       //     'page.content'=>array(
-      //       'user.update'=>$this->user_update_selected()
+      //       'user/update'=>$this->user_update_selected()
       //     )
       //   )
       // );
@@ -103,7 +88,7 @@ class sign extends mapController
       );
       foreach ($form as $Id => $Name) {
         $selected = isset($_GET[$Id])?'selected':$Id;
-        $update["user.update.$selected"] = app\avail::template($Name);
+        $update["user/update.$selected"] = app\avail::template($Name);
       }
       return $update;
     }
@@ -171,7 +156,7 @@ class sign extends mapController
       )->update(
       )->done(
         array(
-          'user.update.cheml'=>array()
+          'user/update.cheml'=>array()
         )
       );
     }
@@ -229,7 +214,7 @@ class sign extends mapController
       )->changepassword(
       )->done(
         array(
-          'user.update.chpwd'=>array()
+          'user/update.chpwd'=>array()
         )
       );
     }
@@ -270,7 +255,7 @@ class sign extends mapController
         }
       )->done(
         array(
-          'user.update.chdis'=>array()
+          'user/update.chdis'=>array()
         )
       );
     }
@@ -429,7 +414,7 @@ class sign extends mapController
       )->insertOrupdate(
       )->done(
         array(
-          'user.update.chpro'=>array()
+          'user/update.chpro'=>array()
         )
       );
     }
@@ -496,7 +481,7 @@ class sign extends mapController
             'page.class'=>'signup',
             'page.content'=>array(
               'layout.bar'=>array(),
-              'user.signup'=>array(),
+              'user/signup'=>array(),
               'layout.footer'=>array()
             )
           )
@@ -557,7 +542,7 @@ class sign extends mapController
             'Keywords'=>'PHP framework',
             'page.content'=>array(
               'layout.bar'=>array(),
-              'user.signin'=>array(),
+              'user/signin'=>array(),
               'layout.footer'=>array()
             )
           )
@@ -608,7 +593,7 @@ class sign extends mapController
             'Keywords'=>'PHP framework',
             'page.content'=>array(
               'layout.bar'=>array(),
-              'user.forgot.password'=>array(),
+              'user/forgot.password'=>array(),
               'layout.footer'=>array()
             )
           )
@@ -662,7 +647,7 @@ class sign extends mapController
             'Keywords'=>'PHP framework',
             'page.content'=>array(
               'layout.bar'=>array(),
-              'user.reset.password'=>array(),
+              'user/reset.password'=>array(),
               'layout.footer'=>array()
             )
           )

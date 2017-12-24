@@ -29,7 +29,7 @@ namespace app\dictionary
       //   $this->table=self::tableName(self::$langCurrent);
       //   if(self::requestChecker(1001,$q)) {
       //     foreach (self::$row[1001] as $value) {
-      //       $keywords .=','.$value[self::$columnEnglish]; self::rowDelete($value['id']);
+      //       $keywords .=','.$value[self::$columnSense]; self::rowDelete($value['id']);
       //     }
       //     $keywords = self::isUnique($keywords);
       //   }
@@ -45,7 +45,7 @@ namespace app\dictionary
     {
       // TODO: working...
       // app\avail::$database->insert(array(
-      //     'source'=>addslashes($q), self::$columnEnglish=>addslashes($g)
+      //     'source'=>addslashes($q), self::$columnSense=>addslashes($g)
       // ))->to($this->table)->execute();
     }
   }
