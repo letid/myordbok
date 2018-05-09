@@ -44,7 +44,7 @@ namespace app\admin
     private function resetId()
     {
       return avail::$database->query(
-        "ALTER TABLE `en_srcf` DROP COLUMN `id`; ALTER TABLE `en_srcf` ADD COLUMN `id` INT(10) NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);"
+        "ALTER TABLE `en_src` DROP COLUMN `id`; ALTER TABLE `en_src` ADD COLUMN `id` INT(10) NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);"
       )->execute();
     }
     private function updateId()

@@ -130,7 +130,6 @@ class api extends mapController
   {
     $task = new app\admin\editor();
     if (isset($_POST['q'])) {
-
       $db = $task->get($_POST['q']);
       if (isset($db->error)){
       } else {

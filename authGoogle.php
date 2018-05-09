@@ -42,6 +42,7 @@ namespace app
 					}
 				}
 			} else {
+				if (avail::$authentication->usersCookie()->has()) avail::$authentication->usersCookieRemove();
 				avail::content('authGoogleUrl')->set(self::$client->createAuthUrl());
 			}
 		}

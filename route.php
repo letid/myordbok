@@ -83,7 +83,7 @@ namespace app
         array(
           'Page'=>'editor',
           'Method'=>'editor',
-          'Auth'=>'superAdmin'
+          // 'Auth'=>'superAdmin'
         )
       ),
       // NOTE: dictionary

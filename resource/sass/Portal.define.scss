@@ -84,14 +84,16 @@
           dt{
             span {
               display: inline-block;
-              padding:7px 2%;
-              font-size: 90%;
-              color: lighten(#666,17%);
-              // font-weight: bold;
-              // border-bottom: 1px dotted #999;
-              // border-bottom: 1px solid #ccc;
+              padding:5px 2%;
+              font-size: 85%;
+
+              color: lighten(#666,7%);
               border: 1px solid #ccc;
               background-color: lighten(#ccc,17%);
+              // color: $ColorMain;
+              // border: 1px solid #ccc;
+              // font-weight: bold;
+              // border-bottom: 1px solid #ccc;
               // border-top-right-radius: 10%;
               // border-top-left-radius: 7px;
             }

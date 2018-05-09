@@ -23,6 +23,18 @@ class home extends mapController
   }
   public function home()
   {
+    /*
+    Array
+    (
+        [access_token] => ya29.GlwwBVqkhrS7uLKDRKXmZIb5QbhIhZlKdJQqgu0yU7q4kMUCacfhIQbpKLEurUlY9sk8zUYTQCA7LGVbdnDetaW9XCZ2UFjIHa17huc5ByLZRdEGxUq9Le05PPeGbw
+        [token_type] => Bearer
+        [expires_in] => 3599
+        [id_token] => eyJhbGciOiJSUzI1NiIsImtpZCI6IjlhNTE2MTlmNDgzMWM0MWVhMjM3MzZhZGEwMmUzZDIzZDFkZjQyMzcifQ.eyJhenAiOiI1NjE3MzY0NDQ4OTMtcjVzbGJtbHJub2luMWlkYnUwMW1sYzN2aHE1NWpvdDAuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI1NjE3MzY0NDQ4OTMtcjVzbGJtbHJub2luMWlkYnUwMW1sYzN2aHE1NWpvdDAuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMTY1ODIxMTcwNDY0ODMzMTY3MDAiLCJlbWFpbCI6ImtoZW5zb2xvbW9uQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoibnM0SEpTWWQ3QkJHaTE0MUZXVXNEZyIsImlzcyI6Imh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbSIsImlhdCI6MTUxNDM2MDE1MSwiZXhwIjoxNTE0MzYzNzUxLCJuYW1lIjoiS2hlbiBTb2xvbW9uIExldGhpbCIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vLWFFX2h4YnprVDY4L0FBQUFBQUFBQUFJL0FBQUFBQUFBVDhvL1gwQ0RTU0JYWVRFL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiJLaGVuIFNvbG9tb24iLCJmYW1pbHlfbmFtZSI6IkxldGhpbCIsImxvY2FsZSI6ImVuIn0.3WfDnYoTXh6nTWpnxGwC0ANQGwBJvxFYIpl6cqAr1q6PnXf43lH4AUxF59mV2hzwpiSs_17JggtA-Nsf938z4yo8thDlKE5Tu6n6asKXOQv08ggchaaABxTgtvkEGZ7VgAE1nNTvRlZseJ2VZ7UqhA4_607zS6aUb59pXtewt10b9Z_LFO4kfIP8VHZCt_l8RlfDwaZHcAXaRHl-0nJNNeKBzaUUCm0OFN5kVqwTOttEb5hFcRpdFD8fh9JdK-1S_dxDHTSmRcGhp8NlRGuvEXzdYn7GOH5SVtz97bOv5owYkX0zwXMauyUZS2wGL3r5wGq-JRSNq6TKfO5IBNCElg
+        [created] => 1514360151
+    )
+    */
+    // $abc = app\authGoogle::client()->user()->accessToken();
+    // print_r($abc);
     // show the result!
     // print_r((string) $response->getBody());
 
@@ -81,7 +93,7 @@ class home extends mapController
         'page.class'=>'about-us',
         'page.content'=>array(
           'layout.bar'=>array(),
-          'aboutus'=>array(
+          'about'=>array(
             'dictionaries'=>app\avail::html(
               array(
                 'ol'=>array(

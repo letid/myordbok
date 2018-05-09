@@ -88,6 +88,10 @@ namespace app\map
     }
     private function home_notfound($d,$lang,$page)
     {
+      $notfound = array();
+      if (app\avail::$authentication->superAdmin()){
+        $notfound['adminClass']='admin add zA';
+      }
       return array(
         'layout'=>array(
           'Title'=>'{q} suggestion us',
@@ -100,7 +104,7 @@ namespace app\map
             'layout.bar'=>array(),
             'layout.header'=>array(),
             'layout.board'=>array(),
-            'definition/notfound'=>array(),
+            'definition/notfound'=>$notfound,
             'layout.footer'=>array()
           )
         )

@@ -14,6 +14,11 @@ edit:function(){
     );
   }
 },
+add:function(){
+  this.Id=core.x.attr('id');
+  this.editPanel();
+  console.log(this.Id);
+},
 editContainer:function(){
   var container = $('body').children('div.editor');
   // if (container.is(":hidden"))container.fadeIn('fast');
