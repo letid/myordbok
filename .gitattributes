@@ -23,7 +23,7 @@
 /resource/grammar/          export-ignore
 #/resource/javascript/       export-ignore
 #/resource/sass/             export-ignore
-/resource/task/             export-ignore
+#/resource/task/             export-ignore
 /resource/working/          export-ignore
 /resource/*.json            export-ignore
 /*.md                       export-ignore
